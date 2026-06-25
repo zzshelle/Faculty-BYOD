@@ -1,100 +1,120 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>教師無線網路試營運 — 臺北市立中正高中</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>教師無線網路試營運 — 臺北市立中正高中</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<style>
-/* ── base ── */
-*, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
-h1,h2,h3,h4 { margin: 0; }
-p { margin: 0; }
-a { text-decoration: none; }
-button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    <style>
+        /* ── base ── */
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; height: 100%; font-family: 'Noto Sans TC', sans-serif; background: #e9f1ed; }
+        h1,h2,h3,h4 { margin: 0; }
+        p { margin: 0; }
+        a { text-decoration: none; }
+        button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
-/* ── page shell ── */
-.page {
-  position: fixed;
-  inset: 0;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  transition: opacity 0.35s ease;
-}
-.page-hidden { opacity: 0 !important; pointer-events: none !important; }
-.u-hidden { display: none !important; }
+        /* ── page shell ── */
+        .page {
+          padding: 48px 24px;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+        }
 
-/* ════════════════════════════════════════════
-   POSTER PAGE
-═══════════════════════════════════════════ */
-#page-poster {
-  background: #e9f1ed;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 48px 24px;
-  font-family: 'Noto Sans TC', sans-serif;
-}
-.poster {
-  position: relative;
-  width: 1240px;
-  max-width: 100%;
-  aspect-ratio: 1240 / 1754;
-  background: #ffffff;
-  box-shadow: 0 8px 40px rgba(11,59,51,.14);
-  overflow: hidden;
-}
-.p-accent { position:absolute; top:0; left:0; bottom:0; width:18px; background:#0e9e7e; }
-.p-body   { position:absolute; inset:0; padding:84px 80px 72px 100px; display:flex; flex-direction:column; }
+        /* ── poster style ── */
+        .poster {
+          position: relative;
+          width: 100%;
+          max-width: 800px; /* 這裡原先為 1240px，為了手機適配調整為最大 800px */
+          background: #ffffff;
+          box-shadow: 0 8px 40px rgba(11,59,51,.14);
+          overflow: hidden;
+          border-radius: 16px;
+        }
+        .p-accent { position:absolute; top:0; left:0; bottom:0; width:18px; background:#0e9e7e; }
+        .p-body   { padding: 60px 40px 60px 60px; display:flex; flex-direction:column; gap: 24px; }
 
-.p-header     { display:flex; justify-content:space-between; align-items:flex-start; font-size:20px; color:#5d7068; font-weight:500; letter-spacing:.5px; }
-.p-org-name   { font-weight:700; color:#16241f; }
-.p-org-sub    { font-family:'IBM Plex Mono',monospace; font-size:15px; color:#8a9a93; letter-spacing:1px; margin-top:4px; }
-.p-badge      { font-family:'IBM Plex Mono',monospace; color:#0e9e7e; letter-spacing:3px; padding-top:4px; }
+        .p-header     { display:flex; justify-content:space-between; align-items:flex-start; font-size:18px; color:#5d7068; font-weight:500; }
+        .p-org-name   { font-weight:700; color:#16241f; }
+        .p-org-sub    { font-family:'IBM Plex Mono',monospace; font-size:14px; color:#8a9a93; margin-top:4px; }
+        .p-badge      { font-family:'IBM Plex Mono',monospace; color:#0e9e7e; font-weight: bold; }
 
-.p-title      { margin-top:46px; }
-.p-tag        { display:inline-block; background:#e7f4ef; color:#0b7a60; font-size:21px; font-weight:700; letter-spacing:1.5px; padding:9px 18px; border-radius:8px; }
-.p-h1         { margin:22px 0 0; font-size:76px; font-weight:900; line-height:1.14; letter-spacing:-1px; color:#16241f; }
-.p-subtitle   { margin-top:14px; font-size:30px; font-weight:500; color:#3f8f7c; letter-spacing:.3px; }
-.p-audience   { margin-top:22px; font-size:25px; font-weight:500; color:#54665f; }
-.p-aud-en     { color:#8a9a93; font-size:21px; }
+        .p-title      { margin-top:10px; }
+        .p-tag        { display:inline-block; background:#e7f4ef; color:#0b7a60; font-size:16px; font-weight:700; padding:6px 14px; border-radius:8px; }
+        .p-h1         { margin:14px 0 0; font-size:40px; font-weight:900; line-height:1.2; color:#16241f; }
+        .p-subtitle   { margin-top:8px; font-size:20px; font-weight:500; color:#3f8f7c; }
 
-.p-datecard   { margin-top:36px; background:#0b3b33; border-radius:20px; padding:36px 40px; display:flex; align-items:center; justify-content:space-between; }
-.p-date-lbl   { font-family:'IBM Plex Mono',monospace; font-size:17px; letter-spacing:3px; color:#7fc9b4; }
-.p-date-num   { margin-top:12px; font-size:66px; font-weight:900; color:#ffffff; line-height:1; }
-.p-date-dash  { color:#7fc9b4; }
-.p-date-r     { text-align:right; line-height:1.5; }
-.p-date-zh    { font-size:22px; color:#aedccf; }
-.p-date-en    { font-family:'IBM Plex Mono',monospace; font-size:18px; color:#7fc9b4; margin-top:8px; }
+        .p-card       { background:#f1f8f5; border-radius:18px; padding:24px; display:flex; gap:16px; }
+        .p-card-num   { font-size:28px; font-weight:900; color:#0e9e7e; }
+        .p-card-h     { font-size:20px; font-weight:700; color:#16241f; }
+        .p-card-zh    { margin-top:6px; font-size:15px; line-height:1.6; color:#4b5d56; }
 
-.p-note-hdr   { margin-top:38px; display:flex; align-items:baseline; gap:14px; }
-.p-note-ttl   { font-size:26px; font-weight:700; color:#16241f; }
-.p-note-en    { font-family:'IBM Plex Mono',monospace; font-size:16px; letter-spacing:2px; color:#9aa9a3; }
+        .p-cta {
+          display:flex; align-items:center; justify-content:center;
+          width:100%; background:#0e9e7e; border-radius:16px;
+          padding:18px; margin-top: 20px;
+          box-shadow:0 8px 22px rgba(14,158,126,.28);
+          transition: background .15s;
+        }
+        .p-cta:hover  { background:#0b8a6e; }
+        .p-cta-main   { font-size:20px; font-weight:900; color:#fff; }
+    </style>
+</head>
+<body>
 
-.p-card       { margin-top:18px; background:#f1f8f5; border-radius:18px; padding:28px 32px; display:flex; gap:24px; }
-.p-card+.p-card { margin-top:14px; }
-.p-card-num   { flex:0 0 auto; font-size:36px; font-weight:900; color:#0e9e7e; line-height:1; }
-.p-card-body  { flex:1; }
-.p-card-h     { font-size:27px; font-weight:700; color:#16241f; }
-.p-card-hen   { font-size:19px; font-weight:500; color:#7a8c85; }
-.p-card-zh    { margin-top:9px; font-size:22px; line-height:1.58; color:#4b5d56; }
-.p-card-hl    { color:#0b7a60; font-weight:700; }
-.p-card-en    { margin-top:6px; font-size:18px; line-height:1.5; color:#849790; }
+    <!-- 這裡補上實際的 HTML 內容，網頁才會有畫面 -->
+    <div class="page" id="page-poster">
+        <div class="poster">
+            <div class="p-accent"></div>
+            <div class="p-body">
+                
+                <!-- 頁首 -->
+                <div class="p-header">
+                    <div>
+                        <div class="p-org-name">臺北市立中正高中</div>
+                        <div class="p-org-sub">Taipei Municipal Zhongzheng Senior High School</div>
+                    </div>
+                    <div class="p-badge">BYOD WI-FI</div>
+                </div>
 
-.p-spacer     { flex:1; }
+                <!-- 標題區 -->
+                <div class="p-title">
+                    <span class="p-tag">試營運 / Beta Test</span>
+                    <h1 class="p-h1">教師自備載具無線網路</h1>
+                    <div class="p-subtitle">教職員 Wi-Fi 連線與網卡登記系統</div>
+                </div>
 
-.p-cta {
-  display:flex; align-items:center; justify-content:center; gap:14px;
-  width:100%; background:#0e9e7e; border:none; border-radius:16px;
-  padding:24px 28px; margin-bottom:16px;
-  box-shadow:0 8px 22px rgba(14,158,126,.28);
-  cursor:pointer; transition:background .15s,box-shadow .15s;
-}
-.p-cta:hover  { background:#0b8a6e; box-shadow:0 10px 28px rgba(14,158,126,.36); }
-.p-cta-main   { font-family:'Noto Sans TC',sans-serif; font-size:30px; font-weight:900; color:#fff; letter-spacing:.5px; }
+                <!-- 卡片區 1 -->
+                <div class="p-card">
+                    <div class="p-card-num">01</div>
+                    <div class="p-card-body">
+                        <div class="p-card-h">首次申請（登記網卡）</div>
+                        <div class="p-card-zh">請連線至 <span class="font-bold text-emerald-700">Teacher-Apply</span>，並關閉「隨機 MAC」功能。</div>
+                    </div>
+                </div>
+
+                <!-- 卡片區 2 -->
+                <div class="p-card">
+                    <div class="p-card-num">02</div>
+                    <div class="p-card-body">
+                        <div class="p-card-h">日常連線</div>
+                        <div class="p-card-zh">完成登記後，往後請直接連線至 <span class="font-bold text-emerald-700">Teacher-Connect</span> 正式上網。</div>
+                    </div>
+                </div>
+
+                <!-- 按鈕 -->
+                <button class="p-cta">
+                    <span class="p-cta-main">開始進行網路設定</span>
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
