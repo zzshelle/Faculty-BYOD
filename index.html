@@ -1,515 +1,210 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>臺北市立中正高中 - 教職員自備載具(Wi-Fi)連線指南 | TMZZHS BYOD Wi-Fi Guide</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;500;600;700&display=swap');
-        body {
-            font-family: 'Inter', 'Noto Sans TC', sans-serif;
-        }
-        .backdrop-blur {
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-    </style>
-</head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
-
-    <!-- Header & Language Switcher -->
-    <header class="bg-white border-b border-slate-100 sticky top-0 z-40 shadow-sm">
-        <div class="max-w-4xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
-            <!-- Brand -->
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white text-lg shadow-lg shadow-indigo-150 shrink-0">
-                    <i class="fas fa-wifi"></i>
-                </div>
-                <div>
-                    <h1 class="text-base font-bold tracking-tight text-slate-900" data-key="nav-title">臺北市立中正高中</h1>
-                    <p class="text-xs text-slate-500 font-medium" data-key="nav-subtitle">教職員自備載具 (Wi-Fi) 連線與申請</p>
-                </div>
-            </div>
-            
-            <!-- Controls (Lang & Quick Info & Download Document) -->
-            <div class="flex flex-wrap items-center justify-center md:justify-end gap-3 w-full md:w-auto">
-                <!-- One-click PDF Document Download -->
-                <a href="https://drive.google.com/file/d/1zpRjaxYxhsHBvcd3CNRR2KXD15Wd86ET/view?usp=drive_link" target="_blank" class="bg-amber-100 hover:bg-amber-200 border border-amber-300 text-slate-800 font-bold text-xs px-3.5 py-2 rounded-lg transition duration-150 flex items-center gap-1.5 shadow-sm">
-                    <i class="fas fa-file-pdf text-red-500"></i>
-                    <span data-key="btn-download-doc">📥 一鍵打包操作文件</span>
-                </a>
-
-                <!-- Language Toggle Button -->
-                <button onclick="toggleLanguage()" class="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-xs px-3 py-2 rounded-lg transition duration-150 flex items-center gap-1.5 border border-indigo-100">
-                    <i class="fas fa-globe"></i>
-                    <span id="lang-btn-text">English</span>
-                </button>
-            </div>
+        <div class="space-y-1.5 bg-slate-50 p-4 rounded-xl">
+          <h4 class="font-bold text-slate-900 flex items-start gap-1.5">
+            <span class="text-rose-500 shrink-0">Q.</span>
+            <span data-key="faq-q2">教職員每位同仁最多能登記幾台個人設備？</span>
+          </h4>
+          <p data-key="faq-a2"><strong>A：目前每位教職員最多可登記 3 台。</strong>包含自備的手機、iPad / 平板、筆記型電腦。若因汰舊換新需要變更額度，請聯絡校內資訊組。</p>
         </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="flex-grow max-w-4xl w-full mx-auto px-6 py-8">
-
-        <!-- 1. Scenario Selector -->
-        <div class="text-center mb-8">
-            <p class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-2" data-key="select-scenario">請選擇目前使用情境 / SELECT SCENARIO</p>
-            <div class="inline-flex p-1 bg-slate-200/60 rounded-2xl w-full sm:w-auto">
-                <button onclick="switchMode('register')" id="btn-mode-register" class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 bg-white text-indigo-600 shadow-sm">
-                    <i class="fas fa-user-plus text-xs"></i> <span data-key="btn-tab-register">首次申請 (登記網卡)</span>
-                </button>
-                <button onclick="switchMode('connect')" id="btn-mode-connect" class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 text-slate-600 hover:text-slate-900">
-                    <i class="fas fa-plane-departure text-xs"></i> <span data-key="btn-tab-connect">日常直接連線</span>
-                </button>
-            </div>
+        <div class="space-y-1.5 bg-slate-50 p-4 rounded-xl">
+          <h4 class="font-bold text-slate-900 flex items-start gap-1.5">
+            <span class="text-rose-500 shrink-0">Q.</span>
+            <span data-key="faq-q3">為什麼網卡實名制如此必要？</span>
+          </h4>
+          <p data-key="faq-a3"><strong>A：保護資安與精確防護。</strong>高中校園經常面臨網路攻擊與惡意存取。透過實名制綁定實體網卡，除了提供快速連線不用重複輸入密碼外，更能落實校園核心主機及教學網路防禦。</p>
         </div>
-
-        <!-- =================== PATH A: REGISTER (首次申請登記) =================== -->
-        <div id="path-register" class="space-y-6">
-            
-            <!-- Step Banner -->
-            <div class="bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-2xl p-6 text-white shadow-md shadow-indigo-100 relative overflow-hidden">
-                <div class="absolute -right-6 -bottom-6 text-white/5 text-9xl font-bold select-none pointer-events-none">1</div>
-                <span class="text-[10px] font-bold tracking-wider uppercase bg-white/20 px-2.5 py-1 rounded-full" data-key="ssid-apply-badge">SSID: Teacher-Apply</span>
-                <h2 class="text-lg font-bold mt-2" data-key="step1-title">連向 Teacher-Apply 進行設備登記</h2>
-                <p class="text-indigo-100 text-xs mt-1" data-key="step1-desc">請開啟您的設備 Wi-Fi，點選並連線至 <strong>Teacher-Apply</strong>。</p>
-            </div>
-
-            <!-- KEY POINT: MAC WARNING -->
-            <div class="bg-rose-50 border border-rose-100 rounded-2xl p-5 flex gap-3.5">
-                <div class="text-rose-500 text-lg shrink-0 mt-0.5">
-                    <i class="fas fa-exclamation-triangle"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-rose-800 text-sm" data-key="mac-warn-title">超級關鍵：請務必關閉「隨機 MAC」</h3>
-                    <p class="text-xs text-rose-700 leading-relaxed mt-1" data-key="mac-warn-desc">
-                        若使用「隨機 MAC」，裝置每次重新連線都會變更代碼，導致系統無法識別您而頻繁斷線。請務必將此連線改為<strong>「使用裝置 MAC / 實體網卡位址」</strong>。
-                    </p>
-                </div>
-            </div>
-
-            <!-- OS Quick Selection (一線指南) -->
-            <div class="bg-white border border-slate-150 rounded-2xl p-6">
-                <h3 class="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">
-                    <span class="w-1 h-3.5 bg-indigo-500 rounded"></span>
-                    <span data-key="os-guide-title">各裝置關閉隨機 MAC 與影片指南</span>
-                </h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <!-- iOS Card -->
-                    <div class="border border-slate-100 rounded-xl p-4 bg-slate-50/50 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-2 font-bold text-xs text-slate-800 mb-2">
-                                <i class="fab fa-apple text-sm text-slate-900"></i> iPhone / iPad (iOS)
-                            </div>
-                            <p class="text-[11px] text-slate-600 leading-relaxed mb-4" data-key="os-ios">
-                                點選 Wi-Fi 旁邊的 <strong>「i」</strong> 圖示，關閉 <strong>「專用位址」/「私密 Wi-Fi 位址」</strong>。
-                            </p>
-                        </div>
-                        <div>
-                            <a href="https://youtube.com/shorts/Q0R0Tp9qVbM" target="_blank" rel="noopener noreferrer" class="w-full bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 hover:text-slate-900 text-[11px] font-bold py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition shadow-sm">
-                                <i class="fab fa-youtube text-red-500"></i>
-                                <span data-key="btn-watch-video">🎬 觀看教學影片</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Android Card -->
-                    <div class="border border-slate-100 rounded-xl p-4 bg-slate-50/50 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-2 font-bold text-xs text-slate-800 mb-2">
-                                <i class="fab fa-android text-sm text-green-600"></i> Android
-                            </div>
-                            <p class="text-[11px] text-slate-600 leading-relaxed mb-4" data-key="os-android">
-                                點選 Wi-Fi 旁齒輪 &gt; 尋找「隱私權」或「MAC位址類型」 &gt; 改選為 <strong>「使用裝置 MAC」</strong>。
-                            </p>
-                        </div>
-                        <div>
-                            <a href="https://youtube.com/shorts/PuZFZwf44F8" target="_blank" rel="noopener noreferrer" class="w-full bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 hover:text-slate-900 text-[11px] font-bold py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition shadow-sm">
-                                <i class="fab fa-youtube text-red-500"></i>
-                                <span data-key="btn-watch-video">🎬 觀看教學影片</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Windows Card -->
-                    <div class="border border-slate-100 rounded-xl p-4 bg-slate-50/50 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-2 font-bold text-xs text-slate-800 mb-2">
-                                <i class="fab fa-windows text-sm text-blue-500"></i> Windows 11 / 10
-                            </div>
-                            <p class="text-[11px] text-slate-600 leading-relaxed mb-4" data-key="os-windows">
-                                點選連線的「屬性」頁面，找到並將 <strong>「隨機硬體位址」</strong> 設為 <strong>關閉</strong>。
-                            </p>
-                        </div>
-                        <div>
-                            <a href="https://youtu.be/e_T06nupvx8" target="_blank" rel="noopener noreferrer" class="w-full bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 hover:text-slate-900 text-[11px] font-bold py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition shadow-sm">
-                                <i class="fab fa-youtube text-red-500"></i>
-                                <span data-key="btn-watch-video">🎬 觀看教學影片</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Auto-popup failure self-rescue -->
-            <div class="bg-white border border-slate-150 rounded-2xl p-6">
-                <h3 class="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2">
-                    <span class="w-1 h-3.5 bg-indigo-500 rounded"></span>
-                    <span data-key="rescue-title">如何開啟登記網頁？(卡頓自救)</span>
-                </h3>
-                
-                <div class="text-xs text-slate-600 space-y-3 leading-relaxed">
-                    <p data-key="rescue-desc">連線成功後一般會自動跳出登記網頁。若無跳出，請開啟您的瀏覽器點選或手動輸入以下網址強迫導向：</p>
-                    <div class="bg-amber-50 border border-amber-200 text-amber-800 rounded-xl p-4">
-                        <div class="flex items-center gap-2 flex-wrap">
-                            <span class="font-bold text-xs" data-key="rescue-target">手機平板強制跳轉連結：</span>
-                            <a href="http://neverssl.com" target="_blank" class="bg-white px-2.5 py-1 rounded border border-amber-300 font-mono text-blue-600 font-bold hover:text-blue-800 hover:underline text-[11px] inline-block shadow-sm">
-                                http://neverssl.com
-                            </a>
-                        </div>
-                        <p class="text-[10px] text-amber-700/90 mt-2" data-key="rescue-tip">※ 請務必在連線至 Teacher-Apply 後才點擊此連結，這會幫助您立刻呼叫登入驗證頁面。</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom CTA -->
-            <div class="text-center pt-2">
-                <button onclick="switchMode('connect')" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold py-3 px-8 rounded-xl shadow-md transition-all">
-                    <span data-key="btn-next-step">我已成功登記，看如何日常連線</span> <i class="fas fa-chevron-right text-xs"></i>
-                </button>
-            </div>
-
-        </div>
-
-        <!-- =================== PATH B: CONNECT (日常連線上網) =================== -->
-        <div id="path-connect" class="hidden space-y-6">
-            
-            <!-- Step Banner -->
-            <div class="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl p-6 text-white shadow-md shadow-emerald-100 relative overflow-hidden">
-                <div class="absolute -right-6 -bottom-6 text-white/5 text-9xl font-bold select-none pointer-events-none">2</div>
-                <span class="text-[10px] font-bold tracking-wider uppercase bg-white/20 px-2.5 py-1 rounded-full" data-key="ssid-connect-badge">SSID: Teacher-Connect</span>
-                <h2 class="text-lg font-bold mt-2" data-key="step2-title">切換至 Teacher-Connect 享用暢快網路</h2>
-                <p class="text-emerald-100 text-xs mt-1" data-key="step2-desc">只要裝置通過登記，以後在學校只需直接選取連線此正式網路。</p>
-            </div>
-
-            <!-- Steps Box -->
-            <div class="bg-white border border-slate-150 rounded-2xl p-6">
-                <h3 class="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">
-                    <span class="w-1 h-3.5 bg-emerald-500 rounded"></span>
-                    <span data-key="daily-steps-title">日常連線三步驟</span>
-                </h3>
-
-                <div class="space-y-4 text-xs">
-                    <div class="flex gap-4">
-                        <span class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold shrink-0 mt-0.5">1</span>
-                        <div>
-                            <h4 class="font-bold text-slate-800 text-sm" data-key="daily-step1-t">選用正式 SSID</h4>
-                            <p class="text-slate-500 mt-0.5" data-key="daily-step1-d">在裝置 Wi-Fi 列表選取連線至 <strong>Teacher-Connect</strong>。</p>
-                        </div>
-                    </div>
-                    <hr class="border-slate-100">
-                    <div class="flex gap-4">
-                        <span class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold shrink-0 mt-0.5">2</span>
-                        <div>
-                            <h4 class="font-bold text-slate-800 text-sm" data-key="daily-step2-t">維持隨機 MAC 關閉</h4>
-                            <p class="text-slate-500 mt-0.5" data-key="daily-step2-d">確保「專用 Wi-Fi 位址」或「隨機硬體位址」依然保持<strong>關閉</strong>（使用原廠實體 MAC）。</p>
-                        </div>
-                    </div>
-                    <hr class="border-slate-100">
-                    <div class="flex gap-4">
-                        <span class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold shrink-0 mt-0.5">3</span>
-                        <div>
-                            <h4 class="font-bold text-slate-800 text-sm" data-key="daily-step3-t">直接連網免登入</h4>
-                            <p class="text-slate-500 mt-0.5" data-key="daily-step3-d">系統識別您的實體網卡已在資料庫中，將會自動放行，無需任何帳密驗證！</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Success Billboard -->
-            <div class="bg-emerald-50 border border-emerald-150 rounded-2xl p-5 text-center space-y-2">
-                <div class="inline-flex bg-emerald-100 text-emerald-700 p-2.5 rounded-full mb-1">
-                    <i class="fas fa-check-double text-base"></i>
-                </div>
-                <h3 class="font-bold text-sm text-emerald-800" data-key="success-card-title">設定完成！未來將自動連線</h3>
-                <p class="text-xs text-emerald-700 max-w-md mx-auto leading-relaxed" data-key="success-card-desc">
-                    您的設備已登記！往後到校便會全自動進行安全的身分識別。若遇到連線阻礙，通常與手機系統升級有關。
-                </p>
-            </div>
-
-            <!-- Back Button -->
-            <div class="pt-2">
-                <button onclick="switchMode('register')" class="text-slate-500 hover:text-slate-800 text-xs font-bold inline-flex items-center gap-1.5 transition">
-                    <i class="fas fa-arrow-left"></i> <span data-key="btn-back-reg">回看首次申請登記步驟</span>
-                </button>
-            </div>
-
-        </div>
-
-        <!-- Sleek Global Trigger for QA Modal -->
-        <div class="mt-12 text-center">
-            <button onclick="openQAModal()" class="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-700 font-bold py-3 px-6 rounded-2xl shadow-sm border border-slate-200 transition duration-150 text-sm">
-                <i class="fas fa-question-circle text-indigo-500 text-base"></i>
-                <span data-key="btn-open-faq">遇到問題？點此看 常見問答 (FAQ)</span>
-            </button>
-        </div>
-
-    </main>
-
-    <!-- FAQ Modal Backdrop (Hidden by default) -->
-    <div id="qa-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur hidden opacity-0 transition-opacity duration-300">
-        <!-- Modal Window -->
-        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-100 transform scale-95 transition-transform duration-300" id="qa-modal-box">
-            
-            <!-- Modal Header -->
-            <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between">
-                <h3 class="font-black text-slate-800 text-base flex items-center gap-2">
-                    <i class="fas fa-question-circle text-indigo-500"></i>
-                    <span data-key="faq-modal-title">常見問與答 (Q&A)</span>
-                </h3>
-                <button onclick="closeQAModal()" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-50 transition">
-                    <i class="fas fa-times text-lg"></i>
-                </button>
-            </div>
-
-            <!-- Modal Content (Scrollable) -->
-            <div class="p-6 overflow-y-auto space-y-5 text-xs text-slate-600 leading-relaxed">
-                <!-- Q1 -->
-                <div class="space-y-1.5 bg-slate-50 p-4 rounded-xl">
-                    <h4 class="font-bold text-slate-900 flex items-start gap-1.5">
-                        <span class="text-rose-500 shrink-0">Q.</span>
-                        <span data-key="faq-q1">之前登記過了，今天來學校為什麼突然不能上網？</span>
-                    </h4>
-                    <p data-key="faq-a1">
-                        <strong>A：九成以上是因為手機「系統更新」。</strong>iOS 或是 Android 在重大安全性更新後，常會重置設定，把原本關閉的「私密位址(隨機 MAC)」重新悄悄開啟。請進入 Wi-Fi 設定，將隨機 MAC「改回使用裝置實體 MAC」即可秒恢復連線！
-                    </p>
-                </div>
-
-                <!-- Q2 -->
-                <div class="space-y-1.5 bg-slate-50 p-4 rounded-xl">
-                    <h4 class="font-bold text-slate-900 flex items-start gap-1.5">
-                        <span class="text-rose-500 shrink-0">Q.</span>
-                        <span data-key="faq-q2">教職員每位同仁最多能登記幾台個人設備？</span>
-                    </h4>
-                    <p data-key="faq-a2">
-                        <strong>A：目前每位教職員最多可登記 3 台。</strong>包含自備的手機、iPad / 平板、筆記型電腦。若因汰舊換新需要變更額度，請聯絡校內資訊組。
-                    </p>
-                </div>
-
-                <!-- Q3 -->
-                <div class="space-y-1.5 bg-slate-50 p-4 rounded-xl">
-                    <h4 class="font-bold text-slate-900 flex items-start gap-1.5">
-                        <span class="text-rose-500 shrink-0">Q.</span>
-                        <span data-key="faq-q3">為什麼網卡實名制如此必要？</span>
-                    </h4>
-                    <p data-key="faq-a3">
-                        <strong>A：保護資安與精確防護。</strong>高中校園經常面臨網路攻擊與惡意存取。透過實名制綁定實體網卡，除了提供快速連線不用重複輸入密碼外，更能落實校園核心主機及教學網路防禦。
-                    </p>
-                </div>
-            </div>
-
-            <!-- Modal Footer -->
-            <div class="px-6 py-4 border-t border-slate-100 bg-slate-50/50 rounded-b-3xl text-center">
-                <button onclick="closeQAModal()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 px-6 rounded-xl transition duration-150 text-xs shadow-sm" data-key="faq-close">
-                    關閉 Close
-                </button>
-            </div>
-
-        </div>
+      </div>
+      <div class="px-6 py-4 border-t border-slate-100 bg-slate-50/50 rounded-b-3xl text-center">
+        <button onclick="closeQAModal()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 px-6 rounded-xl transition duration-150 text-xs shadow-sm" data-key="faq-close">關閉 Close</button>
+      </div>
     </div>
+  </div>
 
-    <!-- Footer Help Desk -->
-    <footer class="bg-white border-t border-slate-200/60 mt-16 py-8 text-slate-500 text-xs">
-        <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <div>
-                <p class="font-bold text-slate-800" data-key="footer-help-title">如有連線疑問，歡迎洽詢資訊組</p>
-                <p class="text-[11px] text-slate-400 mt-0.5" data-key="footer-sub">臺北市立中正高中 資訊組代理系統</p>
-            </div>
-            <div>
-                <span class="inline-flex items-center gap-1.5 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-xl font-bold border border-indigo-100">
-                    <i class="fas fa-phone-alt"></i> <span data-key="footer-phone">校內分機：710</span>
-                </span>
-            </div>
-        </div>
-        <div class="text-center text-[10px] text-slate-400 border-t border-slate-100 mt-6 pt-4">
-            &copy; 臺北市立中正高中. All Rights Reserved.
-        </div>
-    </footer>
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200/60 mt-16 py-8 text-slate-500 text-xs">
+    <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div>
+        <p class="font-bold text-slate-800" data-key="footer-help-title">如有連線疑問，歡迎洽詢資訊組</p>
+        <p class="text-[11px] text-slate-400 mt-0.5" data-key="footer-sub">臺北市立中正高中 資訊組代理系統</p>
+      </div>
+      <div>
+        <span class="inline-flex items-center gap-1.5 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-xl font-bold border border-indigo-100">
+          <i class="fas fa-phone-alt"></i> <span data-key="footer-phone">校內分機：710</span>
+        </span>
+      </div>
+    </div>
+    <div class="text-center text-[10px] text-slate-400 border-t border-slate-100 mt-6 pt-4">
+      &copy; 臺北市立中正高中. All Rights Reserved.
+    </div>
+  </footer>
 
-    <!-- Bilingual Dictionary & Logic -->
-    <script>
-        // Language state
-        let currentLanguage = 'zh';
+</div><!-- #page-guide -->
 
-        // Translation dictionary
-        const translations = {
-            'zh': {
-                'nav-title': "臺北市立中正高中",
-                'nav-subtitle': "教職員自備載具 (Wi-Fi) 連線與申請",
-                'btn-download-doc': "📥 一鍵打包操作文件",
-                'select-scenario': "請選擇目前使用情境",
-                'btn-tab-register': "首次申請 (登記網卡)",
-                'btn-tab-connect': "日常直接連線",
-                'ssid-apply-badge': "SSID: Teacher-Apply",
-                'step1-title': "連向 Teacher-Apply 進行設備登記",
-                'step1-desc': "請開啟您的設備 Wi-Fi，點選並連線至 Teacher-Apply。",
-                'mac-warn-title': "超級關鍵：請務必關閉「隨機 MAC」",
-                'mac-warn-desc': "若使用「隨機 MAC」，裝置每次重新連線都會變更代碼，導致系統無法識別您而頻繁斷線。請務必將此連線改為「使用裝置 MAC / 實體網卡位址」。",
-                'os-guide-title': "各裝置關閉隨機 MAC 與影片指南",
-                'os-ios': "點選 Wi-Fi 旁邊的 「i」 圖示，關閉 「專用位址」/「私密 Wi-Fi 位址」。",
-                'os-android': "點選 Wi-Fi 旁齒輪 > 尋找「隱私權」或「MAC位址類型」 > 改選為 「使用裝置 MAC」。",
-                'os-windows': "點選連線的「屬性」頁面，找到並將 「隨機硬體位址」 設為 關閉。",
-                'rescue-title': "如何開啟登記網頁？(卡頓自救)",
-                'rescue-desc': "連線成功後一般會自動跳出登記網頁。若無跳出，請開啟您的瀏覽器點選或手動輸入以下網址強迫導向：",
-                'rescue-target': "手機平板強制跳轉連結：",
-                'rescue-tip': "※ 請務必在連線至 Teacher-Apply 後才點擊此連結，這會幫助您立刻呼叫登入驗證頁面。",
-                'btn-next-step': "我已成功登記，看如何日常連線",
-                'ssid-connect-badge': "SSID: Teacher-Connect",
-                'step2-title': "切換至 Teacher-Connect 享用暢快網路",
-                'step2-desc': "只要裝置通過登記，以後在學校只需直接選取連線此正式網路。",
-                'daily-steps-title': "日常連線三步驟",
-                'daily-step1-t': "1. 選用正式 SSID",
-                'daily-step1-d': "在裝置 Wi-Fi 列表選取連線至 Teacher-Connect。",
-                'daily-step2-t': "2. 維持隨機 MAC 關閉",
-                'daily-step2-d': "確保「專用 Wi-Fi 位址」或「隨機硬體位址」依然保持關閉（使用原廠實體 MAC）。",
-                'daily-step3-t': "3. 直接連網免登入",
-                'daily-step3-d': "系統識別您的實體網卡已在資料庫中，將會自動放行，無需任何帳密驗證！",
-                'success-card-title': "設定完成！未來將自動連線",
-                'success-card-desc': "您的設備已登記！往後到校便會全自動進行安全的身分識別。若遇到連線阻礙，通常與手機系統升級有關。",
-                'btn-back-reg': "回看首次申請登記步驟",
-                'btn-open-faq': "遇到問題？點此看 常見問答 (FAQ)",
-                'faq-modal-title': "常見問與答 (Q&A)",
-                'faq-q1': "之前登記過了，今天來學校為什麼突然不能上網？",
-                'faq-a1': "A：九成以上是因為手機「系統更新」。iOS 或是 Android 在重大安全性更新後，常會重置設定，把原本關閉的「私密位址(隨機 MAC)」重新悄悄開啟。請進入 Wi-Fi 設定，將隨機 MAC「改回使用裝置實體 MAC」即可秒恢復連線！",
-                'faq-q2': "教職員每位同仁最多能登記幾台個人設備？",
-                'faq-a2': "A：目前每位教職員最多可登記 3 台。包含自備的手機、iPad / 平板、筆記型電腦。若因汰舊換新需要變更額度，請聯絡校內資訊組。",
-                'faq-q3': "為什麼網卡實名制如此必要？",
-                'faq-a3': "A：保護資安與精確防護。高中校園經常面臨網路攻擊與惡意存取。透過實名制綁定實體網卡，除了提供快速連線不用重複輸入密碼外，更能落實校園核心主機及教學網路防禦。",
-                'faq-close': "關閉",
-                'btn-watch-video': "🎬 觀看教學影片",
-                'footer-help-title': "如有連線疑問，歡迎洽詢資訊組",
-                'footer-sub': "臺北市立中正高中 資訊組代理系統",
-                'footer-phone': "校內分機：710"
-            },
-            'en': {
-                'nav-title': "Taipei Municipal Zhongzheng Senior High School",
-                'nav-subtitle': "Faculty BYOD (Wi-Fi) Connection & Application",
-                'btn-download-doc': "📥 Download Step-by-Step Guide",
-                'select-scenario': "Please Select Your Current Scenario",
-                'btn-tab-register': "First-time Registration",
-                'btn-tab-connect': "Daily Easy Connect",
-                'ssid-apply-badge': "SSID: Teacher-Apply",
-                'step1-title': "Connect to Teacher-Apply to Register Device",
-                'step1-desc': "Turn on your Wi-Fi, look for and connect to Teacher-Apply SSID.",
-                'mac-warn-title': "CRITICAL: Must Disable Randomized MAC Address",
-                'mac-warn-desc': "Using \"Random MAC / Private Wi-Fi Address\" causes your device to change its identity constantly, leading to frequent disconnections. Switch to \"Use Device MAC / Real MAC Address\" instead.",
-                'os-guide-title': "Disabling Randomized MAC & Video Guides",
-                'os-ios': "Tap the \"i\" icon next to Wi-Fi name, and turn off \"Private Wi-Fi Address\" / \"Private Address\".",
-                'os-android': "Tap gear icon next to Wi-Fi > Find \"Privacy\" or \"MAC Address Type\" > Select \"Use Device MAC\".",
-                'os-windows': "Go to connected network \"Properties\", find and set \"Random Hardware Addresses\" to Off.",
-                'rescue-title': "Cannot Access the Portal? (Self-Rescue)",
-                'rescue-desc': "Normally, the portal page pops up automatically. If not, open your browser and go to this temporary web link to force redirecting:",
-                'rescue-target': "Redirect link for mobile/tablet:",
-                'rescue-tip': "* Ensure you are connected to Teacher-Apply before clicking, this calls up the identity verification page.",
-                'btn-next-step': "Already registered, how to connect daily?",
-                'ssid-connect-badge': "SSID: Teacher-Connect",
-                'step2-title': "Connect to Teacher-Connect for Normal Web Access",
-                'step2-desc': "Once registered, simply choose this official network for automatic internet access.",
-                'daily-steps-title': "Daily Connection in 3 Steps",
-                'daily-step1-t': "1. Choose Teacher-Connect",
-                'daily-step1-d': "Select Teacher-Connect from your device's Wi-Fi network list.",
-                'daily-step2-t': "2. Keep Randomized MAC Disabled",
-                'daily-step2-d': "Make sure \"Private Address\" or \"Random Hardware Address\" is turned OFF for this connection.",
-                'daily-step3-t': "3. Immediate Access, No Password",
-                'daily-step3-d': "The network detects your registered real MAC address and authorizes you instantly.",
-                'success-card-title': "Setup Completed! Automatic Connections Ahead",
-                'success-card-desc': "Your device is set up! Enjoy automatic secure identification. If there are connection issues later, check if a system update reset your MAC privacy settings.",
-                'btn-back-reg': "Go back to registration steps",
-                'btn-open-faq': "Need Help? View Frequently Asked Questions (FAQ)",
-                'faq-modal-title': "Frequently Asked Questions (FAQ)",
-                'faq-q1': "I've registered before, why can't I access internet today?",
-                'faq-a1': "A: Over 90% is caused by system updates. Major safety updates on iOS or Android often automatically re-enable \"Private Address (Randomized MAC)\". Go back to Wi-Fi settings, turn it OFF to restore connection instantly.",
-                'faq-q2': "What is the device limit per faculty member?",
-                'faq-a2': "A: Currently, 3 personal devices max, including phones, tablets, or laptops. If you need replacement/modifications, please contact the school Information Team.",
-                'faq-q3': "Why is MAC address binding necessary?",
-                'faq-a3': "A: Enhances cybersecurity & defense. School networks are targeted by malicious threats. Real MAC binding avoids repeatedly typing in accounts and solidifies overall security.",
-                'faq-close': "Close",
-                'btn-watch-video': "🎬 Watch Video Guide",
-                'footer-help-title': "Any connection queries? Contact Information Team",
-                'footer-sub': "Zhongzheng Senior High School - IT Office Proxy",
-                'footer-phone': "Ext. 710"
-            }
-        };
 
-        // Switch Path (Register vs Connect)
-        function switchMode(mode) {
-            const pathReg = document.getElementById('path-register');
-            const pathConn = document.getElementById('path-connect');
-            const btnReg = document.getElementById('btn-mode-register');
-            const btnConn = document.getElementById('btn-mode-connect');
+<script>
+  /* ── page switching ── */
+  function showGuide() {
+    document.getElementById('page-poster').classList.add('page-hidden');
+    const guide = document.getElementById('page-guide');
+    guide.classList.remove('page-hidden');
+    guide.scrollTop = 0;
+  }
+  function showPoster() {
+    document.getElementById('page-guide').classList.add('page-hidden');
+    document.getElementById('page-poster').classList.remove('page-hidden');
+  }
 
-            if (mode === 'register') {
-                pathReg.classList.remove('hidden');
-                pathConn.classList.add('hidden');
-                btnReg.className = "flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 bg-white text-indigo-600 shadow-sm";
-                btnConn.className = "flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 text-slate-600 hover:text-slate-900";
-            } else {
-                pathReg.classList.add('hidden');
-                pathConn.classList.remove('hidden');
-                btnReg.className = "flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 text-slate-600 hover:text-slate-900";
-                btnConn.className = "flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 bg-white text-emerald-600 shadow-sm";
-            }
-        }
+  /* ── guide: tab switch ── */
+  function switchMode(mode) {
+    const pathReg  = document.getElementById('path-register');
+    const pathConn = document.getElementById('path-connect');
+    const btnReg   = document.getElementById('btn-mode-register');
+    const btnConn  = document.getElementById('btn-mode-connect');
+    const base = "flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2";
+    if (mode === 'register') {
+      pathReg.classList.remove('hidden');
+      pathConn.classList.add('hidden');
+      btnReg.className  = base + " bg-white text-indigo-600 shadow-sm";
+      btnConn.className = base + " text-slate-600 hover:text-slate-900";
+    } else {
+      pathReg.classList.add('hidden');
+      pathConn.classList.remove('hidden');
+      btnReg.className  = base + " text-slate-600 hover:text-slate-900";
+      btnConn.className = base + " bg-white text-emerald-600 shadow-sm";
+    }
+  }
 
-        // Toggle Language Function
-        function toggleLanguage() {
-            currentLanguage = currentLanguage === 'zh' ? 'en' : 'zh';
-            
-            // Switch language toggle button description
-            document.getElementById('lang-btn-text').innerText = currentLanguage === 'zh' ? 'English' : '繁體中文';
+  /* ── guide: language toggle ── */
+  let currentLanguage = 'zh';
 
-            // Apply translation values
-            document.querySelectorAll('[data-key]').forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (translations[currentLanguage][key]) {
-                    el.innerHTML = translations[currentLanguage][key];
-                }
-            });
-        }
+  const translations = {
+    zh: {
+      'nav-title': "臺北市立中正高中",
+      'nav-subtitle': "教職員自備載具 (Wi-Fi) 連線與申請",
+      'btn-download-doc': "📥 一鍵打包操作文件",
+      'select-scenario': "請選擇目前使用情境",
+      'btn-tab-register': "首次申請 (登記網卡)",
+      'btn-tab-connect': "日常直接連線",
+      'ssid-apply-badge': "SSID: Teacher-Apply",
+      'step1-title': "連向 Teacher-Apply 進行設備登記",
+      'step1-desc': "請開啟您的設備 Wi-Fi，點選並連線至 <strong>Teacher-Apply</strong>。",
+      'mac-warn-title': "超級關鍵：請務必關閉「隨機 MAC」",
+      'mac-warn-desc': "若使用「隨機 MAC」，裝置每次重新連線都會變更代碼，導致系統無法識別您而頻繁斷線。請務必將此連線改為<strong>「使用裝置 MAC / 實體網卡位址」</strong>。",
+      'os-guide-title': "各裝置關閉隨機 MAC 與影片指南",
+      'os-ios': "點選 Wi-Fi 旁邊的 <strong>「i」</strong> 圖示，關閉 <strong>「專用位址」/「私密 Wi-Fi 位址」</strong>。",
+      'os-android': "點選 Wi-Fi 旁齒輪 &gt; 尋找「隱私權」或「MAC位址類型」 &gt; 改選為 <strong>「使用裝置 MAC」</strong>。",
+      'os-windows': "點選連線的「屬性」頁面，找到並將 <strong>「隨機硬體位址」</strong> 設為 <strong>關閉</strong>。",
+      'rescue-title': "如何開啟登記網頁？(卡頓自救)",
+      'rescue-desc': "連線成功後一般會自動跳出登記網頁。若無跳出，請開啟您的瀏覽器點選或手動輸入以下網址強迫導向：",
+      'rescue-target': "手機平板強制跳轉連結：",
+      'rescue-tip': "※ 請務必在連線至 Teacher-Apply 後才點擊此連結，這會幫助您立刻呼叫登入驗證頁面。",
+      'btn-next-step': "我已成功登記，看如何日常連線",
+      'ssid-connect-badge': "SSID: Teacher-Connect",
+      'step2-title': "切換至 Teacher-Connect 享用暢快網路",
+      'step2-desc': "只要裝置通過登記，以後在學校只需直接選取連線此正式網路。",
+      'daily-steps-title': "日常連線三步驟",
+      'daily-step1-t': "選用正式 SSID",
+      'daily-step1-d': "在裝置 Wi-Fi 列表選取連線至 <strong>Teacher-Connect</strong>。",
+      'daily-step2-t': "維持隨機 MAC 關閉",
+      'daily-step2-d': "確保「專用 Wi-Fi 位址」或「隨機硬體位址」依然保持<strong>關閉</strong>（使用原廠實體 MAC）。",
+      'daily-step3-t': "直接連網免登入",
+      'daily-step3-d': "系統識別您的實體網卡已在資料庫中，將會自動放行，無需任何帳密驗證！",
+      'success-card-title': "設定完成！未來將自動連線",
+      'success-card-desc': "您的設備已登記！往後到校便會全自動進行安全的身分識別。若遇到連線阻礙，通常與手機系統升級有關。",
+      'btn-back-reg': "回看首次申請登記步驟",
+      'btn-open-faq': "遇到問題？點此看 常見問答 (FAQ)",
+      'faq-modal-title': "常見問與答 (Q&A)",
+      'faq-q1': "之前登記過了，今天來學校為什麼突然不能上網？",
+      'faq-a1': "<strong>A：九成以上是因為手機「系統更新」。</strong>iOS 或是 Android 在重大安全性更新後，常會重置設定，把原本關閉的「私密位址(隨機 MAC)」重新悄悄開啟。請進入 Wi-Fi 設定，將隨機 MAC「改回使用裝置實體 MAC」即可秒恢復連線！",
+      'faq-q2': "教職員每位同仁最多能登記幾台個人設備？",
+      'faq-a2': "<strong>A：目前每位教職員最多可登記 3 台。</strong>包含自備的手機、iPad / 平板、筆記型電腦。若因汰舊換新需要變更額度，請聯絡校內資訊組。",
+      'faq-q3': "為什麼網卡實名制如此必要？",
+      'faq-a3': "<strong>A：保護資安與精確防護。</strong>高中校園經常面臨網路攻擊與惡意存取。透過實名制綁定實體網卡，除了提供快速連線不用重複輸入密碼外，更能落實校園核心主機及教學網路防禦。",
+      'faq-close': "關閉",
+      'btn-watch-video': "🎬 觀看教學影片",
+      'footer-help-title': "如有連線疑問，歡迎洽詢資訊組",
+      'footer-sub': "臺北市立中正高中 資訊組代理系統",
+      'footer-phone': "校內分機：710"
+    },
+    en: {
+      'nav-title': "Taipei Municipal Zhongzheng Senior High School",
+      'nav-subtitle': "Faculty BYOD (Wi-Fi) Connection & Application",
+      'btn-download-doc': "📥 Download Step-by-Step Guide",
+      'select-scenario': "Please Select Your Current Scenario",
+      'btn-tab-register': "First-time Registration",
+      'btn-tab-connect': "Daily Easy Connect",
+      'ssid-apply-badge': "SSID: Teacher-Apply",
+      'step1-title': "Connect to Teacher-Apply to Register Device",
+      'step1-desc': "Turn on your Wi-Fi, look for and connect to <strong>Teacher-Apply</strong> SSID.",
+      'mac-warn-title': "CRITICAL: Must Disable Randomized MAC Address",
+      'mac-warn-desc': "Using \"Random MAC / Private Wi-Fi Address\" causes your device to change its identity constantly, leading to frequent disconnections. Switch to <strong>\"Use Device MAC / Real MAC Address\"</strong> instead.",
+      'os-guide-title': "Disabling Randomized MAC & Video Guides",
+      'os-ios': "Tap the <strong>\"i\"</strong> icon next to Wi-Fi name, and turn off <strong>\"Private Wi-Fi Address\" / \"Private Address\"</strong>.",
+      'os-android': "Tap gear icon next to Wi-Fi &gt; Find \"Privacy\" or \"MAC Address Type\" &gt; Select <strong>\"Use Device MAC\"</strong>.",
+      'os-windows': "Go to connected network \"Properties\", find and set <strong>\"Random Hardware Addresses\"</strong> to <strong>Off</strong>.",
+      'rescue-title': "Cannot Access the Portal? (Self-Rescue)",
+      'rescue-desc': "Normally, the portal page pops up automatically. If not, open your browser and go to this link to force redirect:",
+      'rescue-target': "Redirect link for mobile/tablet:",
+      'rescue-tip': "* Ensure you are connected to Teacher-Apply before clicking — this calls up the identity verification page.",
+      'btn-next-step': "Already registered — how to connect daily?",
+      'ssid-connect-badge': "SSID: Teacher-Connect",
+      'step2-title': "Connect to Teacher-Connect for Normal Web Access",
+      'step2-desc': "Once registered, simply choose this official network for automatic internet access.",
+      'daily-steps-title': "Daily Connection in 3 Steps",
+      'daily-step1-t': "Choose Teacher-Connect",
+      'daily-step1-d': "Select <strong>Teacher-Connect</strong> from your device's Wi-Fi network list.",
+      'daily-step2-t': "Keep Randomized MAC Disabled",
+      'daily-step2-d': "Make sure \"Private Address\" or \"Random Hardware Address\" is turned <strong>OFF</strong> for this connection.",
+      'daily-step3-t': "Immediate Access, No Password",
+      'daily-step3-d': "The network detects your registered real MAC address and authorizes you instantly.",
+      'success-card-title': "Setup Completed! Automatic Connections Ahead",
+      'success-card-desc': "Your device is set up! Enjoy automatic secure identification. If there are connection issues later, check if a system update reset your MAC privacy settings.",
+      'btn-back-reg': "Go back to registration steps",
+      'btn-open-faq': "Need Help? View Frequently Asked Questions (FAQ)",
+      'faq-modal-title': "Frequently Asked Questions (FAQ)",
+      'faq-q1': "I've registered before — why can't I access internet today?",
+      'faq-a1': "<strong>A: Over 90% is caused by system updates.</strong> Major safety updates on iOS or Android often automatically re-enable \"Private Address (Randomized MAC)\". Go back to Wi-Fi settings and turn it OFF to restore connection instantly.",
+      'faq-q2': "What is the device limit per faculty member?",
+      'faq-a2': "<strong>A: Currently 3 personal devices max</strong>, including phones, tablets, or laptops. If you need changes, please contact the school IT section.",
+      'faq-q3': "Why is MAC address binding necessary?",
+      'faq-a3': "<strong>A: Enhanced cybersecurity & defense.</strong> School networks are targeted by malicious threats. Real MAC binding avoids repeatedly typing accounts and solidifies overall network security.",
+      'faq-close': "Close",
+      'btn-watch-video': "🎬 Watch Video Guide",
+      'footer-help-title': "Any connection queries? Contact IT Section",
+      'footer-sub': "Zhongzheng Senior High School — IT Office",
+      'footer-phone': "Ext. 710"
+    }
+  };
 
-        // Modal Logic
-        const modal = document.getElementById('qa-modal');
-        const modalBox = document.getElementById('qa-modal-box');
+  function toggleLanguage() {
+    currentLanguage = currentLanguage === 'zh' ? 'en' : 'zh';
+    document.getElementById('lang-btn-text').innerText = currentLanguage === 'zh' ? 'English' : '繁體中文';
+    document.querySelectorAll('[data-key]').forEach(el => {
+      const key = el.getAttribute('data-key');
+      if (translations[currentLanguage][key] !== undefined) {
+        el.innerHTML = translations[currentLanguage][key];
+      }
+    });
+  }
 
-        function openQAModal() {
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                modalBox.classList.remove('scale-95');
-                modalBox.classList.add('scale-100');
-            }, 50);
-        }
+  /* ── guide: FAQ modal ── */
+  const modal    = document.getElementById('qa-modal');
+  const modalBox = document.getElementById('qa-modal-box');
 
-        function closeQAModal() {
-            modal.classList.add('opacity-0');
-            modalBox.classList.remove('scale-100');
-            modalBox.classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
-        }
-
-        // Close on backdrop click
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeQAModal();
-            }
-        });
-    </script>
+  function openQAModal() {
+    modal.classList.remove('hidden');
+    requestAnimationFrame(() => {
+      modal.classList.remove('opacity-0');
+      modalBox.classList.remove('scale-95');
+      modalBox.classList.add('scale-100');
+    });
+  }
+  function closeQAModal() {
+    modal.classList.add('opacity-0');
+    modalBox.classList.remove('scale-100');
+    modalBox.classList.add('scale-95');
+    setTimeout(() => modal.classList.add('hidden'), 300);
+  }
+  modal.addEventListener('click', e => { if (e.target === modal) closeQAModal(); });
+</script>
 </body>
 </html>
