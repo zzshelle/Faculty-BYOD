@@ -13,21 +13,15 @@
 <style>
 /* ── base ── */
 *, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+html, body { margin: 0; padding: 0; }
 h1,h2,h3,h4 { margin: 0; }
 p { margin: 0; }
 a { text-decoration: none; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
 /* ── page shell ── */
-.page {
-  position: fixed;
-  inset: 0;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  transition: opacity 0.35s ease;
-}
-.page-hidden { opacity: 0 !important; pointer-events: none !important; }
+.page { display: block; }
+.page-hidden { display: none !important; }
 .u-hidden { display: none !important; }
 
 /* ════════════════════════════════════════════
@@ -39,6 +33,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   justify-content: center;
   align-items: flex-start;
   padding: 48px 24px;
+  min-height: 100vh;
   font-family: 'Noto Sans TC', sans-serif;
 }
 .poster {
@@ -98,3 +93,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .p-cta:hover  { background:#0b8a6e; box-shadow:0 10px 28px rgba(14,158,126,.36); }
 .p-cta-main   { font-family:'Noto Sans TC',sans-serif; font-size:30px; font-weight:900; color:#fff; letter-spacing:.5px; }
+.p-cta-sub    { font-family:'Noto Sans TC',sans-serif; font-size:18px; font-weight:500; color:#bdeede; }
+.p-cta-arrow  { font-size:30px; color:#fff; line-height:1; margin-left:4px; }
+
+.p-nets       { display:flex; gap:16px; }
+.p-net        { flex:1; border:1.5px solid #d4e6df; border-radius:16px; padding:18px 22px; }
