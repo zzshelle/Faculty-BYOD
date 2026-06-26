@@ -98,3 +98,835 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .p-nets       { display:flex; gap:16px; }
 .p-net        { flex:1; border:1.5px solid #d4e6df; border-radius:16px; padding:18px 22px; }
+.p-net-ssid   { font-family:'IBM Plex Mono',monospace; font-size:22px; color:#16241f; }
+.p-net-desc   { margin-top:3px; font-size:18px; color:#6b7d76; }
+
+.p-footer     { margin-top:22px; border-top:1px solid #e2ece8; padding-top:20px; font-size:19px; line-height:1.55; color:#6b7d76; }
+.p-footer-ext { color:#16241f; font-weight:700; }
+.p-footer-en  { font-size:16px; color:#9aa9a3; margin-top:4px; }
+
+/* responsive poster */
+@media (max-width: 1300px) {
+  #page-poster  { padding:24px 12px; }
+  .p-body       { font-size:1.6vw; padding:6.8vw 6.5vw 5.8vw 8vw; }
+  .p-h1         { font-size:6.1vw; }
+  .p-subtitle   { font-size:2.4vw; }
+  .p-date-num   { font-size:5.3vw; }
+  .p-tag        { font-size:1.7vw; }
+  .p-audience   { font-size:2vw; }
+  .p-aud-en     { font-size:1.7vw; }
+  .p-header     { font-size:1.6vw; }
+  .p-org-sub    { font-size:1.2vw; }
+  .p-date-lbl   { font-size:1.4vw; }
+  .p-date-zh    { font-size:1.8vw; }
+  .p-date-en    { font-size:1.5vw; }
+  .p-card-num   { font-size:2.9vw; }
+  .p-card-h     { font-size:2.2vw; }
+  .p-card-hen   { font-size:1.5vw; }
+  .p-card-zh    { font-size:1.8vw; }
+  .p-card-en    { font-size:1.5vw; }
+  .p-cta-main   { font-size:2.4vw; }
+  .p-cta-sub    { font-size:1.5vw; }
+  .p-cta-arrow  { font-size:2.4vw; }
+  .p-net-ssid   { font-size:1.8vw; }
+  .p-net-desc   { font-size:1.5vw; }
+  .p-footer     { font-size:1.5vw; }
+  .p-footer-en  { font-size:1.3vw; }
+  .p-note-ttl   { font-size:2.1vw; }
+  .p-note-en    { font-size:1.3vw; }
+  .p-accent     { width:1.45vw; }
+  .p-datecard   { padding:2.9vw 3.2vw; }
+  .p-card       { padding:2.3vw 2.6vw; }
+  .p-cta        { padding:1.9vw 2.3vw; border-radius:1.3vw; }
+}
+
+/* ============================================
+   GUIDE PAGE  — design tokens match poster
+   Primary  #0e9e7e  Deep #0b3b33  Text #16241f
+   Card bg  #f1f8f5  Border #d4e6df  Page bg #e9f1ed
+   Scale: label 12px · caption 13px · body 15px
+          card-title 16px · section 18px · banner 22px
+=========================================== */
+#page-guide {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Noto Sans TC', sans-serif;
+  background: #e9f1ed;
+  color: #16241f;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* header */
+.gh-header {
+  background: #fff;
+  border-bottom: 1px solid #d4e6df;
+  box-shadow: 0 1px 4px rgba(11,59,51,.07);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+.gh-inner {
+  max-width: 896px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.gh-brand { display:flex; align-items:center; gap:10px; }
+.gh-back {
+  width:36px; height:36px; border-radius:10px; display:flex;
+  align-items:center; justify-content:center;
+  color:#9aa9a3; transition:background .15s,color .15s;
+}
+.gh-back:hover { background:#f1f8f5; color:#4b5d56; }
+.gh-logo {
+  width:38px; height:38px; background:#0e9e7e; border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-size:16px; flex-shrink:0;
+  box-shadow:0 4px 10px rgba(14,158,126,.25);
+}
+.gh-brand-title { font-size:15px; font-weight:700; color:#16241f; }
+.gh-brand-sub   { font-size:13px; color:#6b7d76; font-weight:500; }
+
+.gh-controls { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.gh-btn-dl {
+  display:flex; align-items:center; gap:6px;
+  background:#fef3c7; border:1px solid #fcd34d; color:#16241f;
+  font-weight:700; font-size:13px; padding:7px 12px; border-radius:9px;
+  transition:background .15s; box-shadow:0 1px 2px rgba(0,0,0,.05);
+  text-decoration:none;
+}
+.gh-btn-dl:hover { background:#fde68a; }
+.gh-btn-lang {
+  display:flex; align-items:center; gap:6px;
+  background:#e7f4ef; border:1px solid #c3e5d8; color:#0b7a60;
+  font-weight:700; font-size:13px; padding:7px 11px; border-radius:9px;
+  transition:background .15s;
+}
+.gh-btn-lang:hover { background:#d0ecdf; }
+
+/* main */
+.gh-main {
+  flex-grow: 1;
+  max-width: 896px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+/* tabs */
+.gh-scenario-label {
+  font-size:12px; color:#9aa9a3; font-weight:700;
+  text-transform:uppercase; letter-spacing:.1em;
+  text-align:center; margin-bottom:8px;
+}
+.gh-tabs-wrap { text-align:center; margin-bottom:32px; }
+.gh-tabs {
+  display:inline-flex; padding:4px;
+  background:rgba(11,59,51,.08); border-radius:18px;
+  width:100%;
+}
+@media (min-width:640px) { .gh-tabs { width:auto; } }
+
+.gh-tab {
+  flex:1; padding:10px 20px; border-radius:14px;
+  font-size:14px; font-weight:700; transition:all .2s;
+  display:flex; align-items:center; justify-content:center; gap:7px;
+  color:#6b7d76; background:transparent;
+}
+.gh-tab:hover { color:#16241f; }
+.gh-tab.tab-active { background:#fff; color:#0e9e7e; box-shadow:0 1px 4px rgba(11,59,51,.1); }
+
+/* paths */
+.gh-path { display:flex; flex-direction:column; gap:22px; }
+
+/* banner */
+.gh-banner {
+  border-radius:18px; padding:26px; color:#fff;
+  position:relative; overflow:hidden;
+}
+.gh-banner-num {
+  position:absolute; right:-20px; bottom:-20px;
+  font-size:110px; font-weight:900; color:rgba(255,255,255,.06);
+  line-height:1; user-select:none; pointer-events:none;
+}
+.gh-banner-a { background:#0b3b33; box-shadow:0 4px 16px rgba(11,59,51,.28); }
+.gh-banner-b { background:#0b5c46; box-shadow:0 4px 16px rgba(11,92,70,.24); }
+.gh-badge {
+  display:inline-block; font-size:12px; font-weight:700;
+  letter-spacing:.08em; text-transform:uppercase;
+  background:rgba(255,255,255,.18); padding:4px 12px;
+  border-radius:999px; margin-bottom:9px;
+  font-family:'IBM Plex Mono',monospace;
+}
+.gh-banner h2 { font-size:22px; font-weight:700; margin-bottom:5px; }
+.gh-banner p  { font-size:15px; opacity:.82; margin:0; }
+.gh-pwd-row   { display:flex; align-items:center; gap:12px; margin-top:16px; flex-wrap:wrap; }
+.gh-pwd-lbl   { font-size:13px; color:rgba(255,255,255,.7); font-weight:500; }
+.gh-pwd-code  { font-family:'IBM Plex Mono',monospace; font-size:20px; font-weight:700;
+                letter-spacing:2px; background:rgba(255,255,255,.16); padding:6px 16px;
+                border-radius:10px; border:1px solid rgba(255,255,255,.28); color:#fff; }
+.gh-pwd-tip   { font-size:12px; color:rgba(255,255,255,.55); }
+
+/* warning card */
+.gh-warn { background:#fff1f2; border:1px solid #ffe4e6; border-radius:18px; padding:20px; display:flex; gap:14px; }
+.gh-warn-icon { color:#f43f5e; font-size:18px; flex-shrink:0; margin-top:2px; }
+.gh-warn-title { font-weight:700; color:#9f1239; font-size:15px; margin-bottom:5px; }
+.gh-warn-desc  { font-size:14px; color:#be123c; line-height:1.65; }
+
+/* white card */
+.gh-card { background:#fff; border:1px solid #d4e6df; border-radius:18px; padding:24px; }
+.gh-card-title { font-size:16px; font-weight:700; color:#16241f; display:flex; align-items:center; gap:8px; margin-bottom:16px; }
+.gh-bar { width:4px; height:15px; border-radius:2px; flex-shrink:0; background:#0e9e7e; }
+
+/* OS grid */
+.gh-os-grid {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+}
+@media (min-width:768px) { .gh-os-grid { grid-template-columns:repeat(3,1fr); } }
+.gh-os-card {
+  border:1px solid #d4e6df; border-radius:14px; padding:16px;
+  background:#f1f8f5;
+  display:flex; flex-direction:column; justify-content:space-between; gap:14px;
+}
+.gh-os-name { display:flex; align-items:center; gap:7px; font-weight:700; font-size:13px; color:#16241f; margin-bottom:6px; }
+.gh-os-desc { font-size:13px; color:#4b5d56; line-height:1.65; }
+.gh-vid-btn {
+  display:flex; align-items:center; justify-content:center; gap:6px;
+  width:100%; padding:8px 12px;
+  background:#fff; border:1px solid #d4e6df; border-radius:9px;
+  font-size:13px; font-weight:700; color:#4b5d56;
+  transition:background .15s,color .15s;
+  box-shadow:0 1px 2px rgba(11,59,51,.05); text-decoration:none;
+}
+.gh-vid-btn:hover { background:#f1f8f5; color:#16241f; }
+
+/* rescue / amber */
+.gh-amber { background:#fffbeb; border:1px solid #fde68a; border-radius:12px; padding:16px; }
+.gh-amber-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.gh-amber-lbl { font-weight:700; font-size:13px; color:#92400e; }
+.gh-amber-link {
+  background:#fff; padding:4px 10px; border-radius:6px;
+  border:1px solid #fcd34d; font-family:'IBM Plex Mono',monospace;
+  color:#2563eb; font-weight:700; font-size:13px;
+  box-shadow:0 1px 2px rgba(0,0,0,.04); text-decoration:none;
+}
+.gh-amber-link:hover { text-decoration:underline; color:#1d4ed8; }
+.gh-amber-tip { font-size:12px; color:rgba(146,64,14,.85); margin-top:8px; }
+.gh-text-xs { font-size:14px; color:#4b5d56; line-height:1.65; margin-bottom:12px; }
+
+/* next CTA */
+.gh-cta-next { text-align:center; padding-top:8px; }
+.gh-btn-next {
+  display:inline-flex; align-items:center; gap:8px;
+  background:#0e9e7e; color:#fff;
+  font-size:15px; font-weight:700;
+  padding:12px 30px; border-radius:12px; border:none;
+  cursor:pointer; transition:background .15s;
+  box-shadow:0 4px 14px rgba(14,158,126,.28);
+}
+.gh-btn-next:hover { background:#0b8a6e; }
+
+/* daily steps */
+.gh-steps { display:flex; flex-direction:column; gap:16px; }
+.gh-step  { display:flex; gap:16px; }
+.gh-step-num {
+  width:26px; height:26px; border-radius:50%;
+  background:#e7f4ef; color:#0b7a60;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:13px; flex-shrink:0; margin-top:2px;
+}
+.gh-step-title { font-weight:700; color:#16241f; font-size:16px; margin-bottom:3px; }
+.gh-step-desc  { font-size:14px; color:#4b5d56; line-height:1.6; }
+.gh-divider    { border:none; border-top:1px solid #d4e6df; }
+
+/* success card */
+.gh-success { background:#e7f4ef; border:1px solid #c3e5d8; border-radius:18px; padding:22px; text-align:center; }
+.gh-success-icon { display:inline-flex; background:#c3e5d8; color:#0b7a60; padding:10px; border-radius:50%; margin-bottom:6px; }
+.gh-success-title { font-weight:700; font-size:16px; color:#0b3b33; margin-bottom:5px; }
+.gh-success-desc  { font-size:14px; color:#0b7a60; line-height:1.65; max-width:400px; margin:0 auto; }
+
+/* back link */
+.gh-back-link { font-size:13px; font-weight:700; color:#6b7d76; display:inline-flex; align-items:center; gap:6px; background:none; border:none; cursor:pointer; transition:color .15s; }
+.gh-back-link:hover { color:#16241f; }
+
+/* FAQ trigger */
+.gh-faq-wrap { margin-top:48px; text-align:center; }
+.gh-faq-btn {
+  display:inline-flex; align-items:center; gap:8px;
+  background:#fff; color:#16241f; font-weight:700; font-size:15px;
+  padding:12px 24px; border-radius:18px;
+  border:1px solid #d4e6df; box-shadow:0 1px 4px rgba(11,59,51,.07);
+  cursor:pointer; transition:background .15s;
+}
+.gh-faq-btn:hover { background:#f1f8f5; }
+.gh-faq-icon { color:#0e9e7e; font-size:16px; }
+
+/* modal */
+.gh-modal-backdrop {
+  position:fixed; inset:0; z-index:50;
+  display:none;
+  align-items:center; justify-content:center; padding:16px;
+  background:rgba(11,59,51,.45);
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+}
+.gh-modal-backdrop.modal-open { display:flex; }
+.gh-modal {
+  background:#fff; border-radius:24px;
+  max-width:480px; width:100%; max-height:85vh;
+  display:flex; flex-direction:column;
+  box-shadow:0 20px 60px rgba(11,59,51,.2);
+  border:1px solid #d4e6df;
+  transform:scale(.95) translateY(8px);
+  transition:transform .25s ease, opacity .25s ease;
+  opacity:0;
+}
+.gh-modal-backdrop.modal-open .gh-modal { transform:scale(1) translateY(0); opacity:1; }
+.gh-modal-header { padding:18px 22px; border-bottom:1px solid #d4e6df; display:flex; align-items:center; justify-content:space-between; }
+.gh-modal-title  { font-size:17px; font-weight:900; color:#16241f; display:flex; align-items:center; gap:8px; }
+.gh-modal-close  { color:#9aa9a3; padding:5px; border-radius:8px; font-size:17px; transition:background .15s,color .15s; }
+.gh-modal-close:hover { background:#f1f8f5; color:#4b5d56; }
+.gh-modal-body   { padding:20px; overflow-y:auto; display:flex; flex-direction:column; gap:14px; font-size:14px; color:#4b5d56; line-height:1.65; }
+.gh-faq-item     { background:#f1f8f5; padding:16px; border-radius:14px; }
+.gh-faq-q        { font-weight:700; color:#16241f; display:flex; align-items:flex-start; gap:6px; margin-bottom:6px; }
+.gh-faq-q-mark   { color:#f43f5e; flex-shrink:0; }
+.gh-modal-foot   { padding:16px 22px; border-top:1px solid #d4e6df; background:rgba(241,248,245,.5); border-radius:0 0 24px 24px; text-align:center; }
+.gh-close-btn    { background:#0b3b33; color:#fff; font-weight:700; font-size:13px; padding:10px 24px; border-radius:12px; border:none; cursor:pointer; transition:background .15s; }
+.gh-close-btn:hover { background:#16241f; }
+
+/* footer */
+.gh-footer { background:#fff; border-top:1px solid #d4e6df; margin-top:64px; padding:28px 24px; font-size:14px; color:#6b7d76; }
+.gh-footer-inner { max-width:896px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:14px; text-align:center; }
+@media (min-width:640px) { .gh-footer-inner { flex-direction:row; justify-content:space-between; text-align:left; } }
+.gh-footer-title { font-weight:700; color:#16241f; font-size:15px; margin-bottom:2px; }
+.gh-footer-ext   { display:inline-flex; align-items:center; gap:6px; background:#e7f4ef; color:#0b7a60; padding:8px 16px; border-radius:12px; font-weight:700; border:1px solid #c3e5d8; }
+.gh-footer-copy  { text-align:center; font-size:12px; color:#9aa9a3; border-top:1px solid #d4e6df; margin-top:20px; padding-top:14px; max-width:896px; margin-left:auto; margin-right:auto; }
+</style>
+</head>
+<body>
+
+<!-- ==========================================
+     PAGE 1 — ANNOUNCEMENT POSTER
+=========================================== -->
+<div id="page-poster" class="page">
+  <main class="poster" role="main" aria-label="教師無線網路試營運公告">
+    <div class="p-accent" aria-hidden="true"></div>
+    <div class="p-body">
+
+      <div class="p-header">
+        <div>
+          <div><span class="p-org-name">中正高中</span>&nbsp;&nbsp;圖書館 · 資媒組</div>
+          <div class="p-org-sub">Chung Cheng SHS · Library Media Section</div>
+        </div>
+        <div class="p-badge">TRIAL RUN</div>
+      </div>
+
+      <div class="p-title">
+        <div class="p-tag">WiFi 試營運通知 · Wi-Fi Trial Run Notice</div>
+        <h1 class="p-h1">教師無線網路<br>註冊系統試營運</h1>
+        <div class="p-subtitle">Teacher Wi-Fi Registration System — Trial Run</div>
+      </div>
+
+      <div class="p-audience">
+        適用對象 · 全校教職員工&nbsp;&nbsp;<span class="p-aud-en">For all faculty &amp; staff</span>
+      </div>
+
+      <div class="p-datecard">
+        <div>
+          <div class="p-date-lbl">試營運期間 · TRIAL PERIOD</div>
+          <div class="p-date-num">115/6/26<span class="p-date-dash">–</span>7/3</div>
+        </div>
+        <div class="p-date-r">
+          <div class="p-date-zh">民國 115 年 6 月 26 日（五）<br>至 7 月 3 日（五）</div>
+          <div class="p-date-en">Jun 26 – Jul 3, 2026 · Fri–Fri</div>
+        </div>
+      </div>
+
+      <div class="p-note-hdr">
+        <div class="p-note-ttl">注意事項</div>
+        <div class="p-note-en">PLEASE NOTE</div>
+      </div>
+
+      <div class="p-card">
+        <div class="p-card-num">01</div>
+        <div class="p-card-body">
+          <div class="p-card-h">操作問題回報 <span class="p-card-hen">Reporting Issues</span></div>
+          <div class="p-card-zh">試營運期間如遇任何操作障礙，請以「原信回覆」資訊組，並附上 ① 裝置 MAC 碼&nbsp;&nbsp;② 操作畫面截圖。</div>
+          <div class="p-card-en">If you hit any problem, reply to the original email to the IT section and attach: ① device MAC address ② a screenshot.</div>
+        </div>
+      </div>
+
+      <div class="p-card">
+        <div class="p-card-num">02</div>
+        <div class="p-card-body">
+          <div class="p-card-h">裝置須重新註冊 <span class="p-card-hen">Devices Will Be Reset</span></div>
+          <div class="p-card-zh">試營運期間註冊成功的裝置，將於正式營運上線前<span class="p-card-hl">全數清空</span>；正式營運啟用時，請依教學步驟重新註冊。</div>
+          <div class="p-card-en">All devices registered during the trial will be cleared before launch. Please re-register following the guide when the system goes live.</div>
+        </div>
+      </div>
+
+      <div class="p-spacer"></div>
+
+      <button class="p-cta" onclick="showGuide()">
+        <span class="p-cta-main">開始綁定我的自備載具</span>
+        <span class="p-cta-sub">Register my BYOD device</span>
+        <span class="p-cta-arrow">→</span>
+      </button>
+
+      <div class="p-nets">
+        <div class="p-net">
+          <div class="p-net-ssid">Teacher-Apply</div>
+          <div class="p-net-desc">登記認證用 · for registration</div>
+        </div>
+        <div class="p-net">
+          <div class="p-net-ssid">Teacher-Connect</div>
+          <div class="p-net-desc">正式教學用 · for teaching</div>
+        </div>
+      </div>
+
+      <div class="p-footer">
+        洽詢 圖書館資媒組　分機 <span class="p-footer-ext">710 / 711</span>
+        <div class="p-footer-en">Contact: Library Media Section, ext. 710 / 711.</div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+
+<!-- ==========================================
+     PAGE 2 — BYOD WI-FI GUIDE
+=========================================== -->
+<div id="page-guide" class="page page-hidden">
+
+  <!-- Header -->
+  <header class="gh-header">
+    <div class="gh-inner">
+      <div class="gh-brand">
+        <button class="gh-back" onclick="showPoster()" title="回公告首頁">
+          ←
+        </button>
+        <div class="gh-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+        <div>
+          <div class="gh-brand-title" data-key="nav-title">臺北市立中正高中</div>
+          <div class="gh-brand-sub" data-key="nav-subtitle">教職員自備載具 (Wi-Fi) 連線與申請</div>
+        </div>
+      </div>
+      <div class="gh-controls">
+        <a href="https://drive.google.com/file/d/1zpRjaxYxhsHBvcd3CNRR2KXD15Wd86ET/view?usp=drive_link" target="_blank" class="gh-btn-dl">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+          <span data-key="btn-download-doc">📥 一鍵打包操作文件</span>
+        </a>
+        <button class="gh-btn-lang" onclick="toggleLanguage()">
+          <span id="lang-btn-text">English</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="gh-main">
+
+    <!-- Tabs -->
+    <div>
+      <p class="gh-scenario-label" data-key="select-scenario">請選擇目前使用情境 / SELECT SCENARIO</p>
+      <div class="gh-tabs-wrap">
+        <div class="gh-tabs">
+          <button class="gh-tab tab-active" id="btn-tab-reg" onclick="switchMode('register')">
+            <span data-key="btn-tab-register">首次申請 (登記網卡)</span>
+          </button>
+          <button class="gh-tab" id="btn-tab-conn" onclick="switchMode('connect')">
+            <span data-key="btn-tab-connect">日常直接連線</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PATH A: REGISTER -->
+    <div id="path-register" class="gh-path">
+
+      <div class="gh-banner gh-banner-a">
+        <div class="gh-banner-num">1</div>
+        <div class="gh-badge" data-key="ssid-apply-badge">SSID: Teacher-Apply</div>
+        <h2 data-key="step1-title">連向 Teacher-Apply 進行設備登記</h2>
+        <p data-key="step1-desc">請開啟您的設備 Wi-Fi，點選並連線至 <strong>Teacher-Apply</strong>。</p>
+        <div class="gh-pwd-row">
+          <span class="gh-pwd-lbl" data-key="pwd-apply-lbl">🔑 Wi-Fi 密碼 / Password</span>
+          <span class="gh-pwd-code">ccsh@2823</span>
+          <span class="gh-pwd-tip" data-key="pwd-apply-tip">連線時輸入一次即可 · Enter once when joining</span>
+        </div>
+      </div>
+
+      <div class="gh-warn">
+        <div class="gh-warn-icon">⚠</div>
+        <div>
+          <div class="gh-warn-title" data-key="mac-warn-title">超級關鍵：請務必關閉「隨機 MAC」</div>
+          <div class="gh-warn-desc" data-key="mac-warn-desc">若使用「隨機 MAC」，裝置每次重新連線都會變更代碼，導致系統無法識別您而頻繁斷線。請務必將此連線改為<strong>「使用裝置 MAC / 實體網卡位址」</strong>。</div>
+        </div>
+      </div>
+
+      <div class="gh-card">
+        <div class="gh-card-title">
+          <div class="gh-bar gh-bar"></div>
+          <span data-key="os-guide-title">各裝置關閉隨機 MAC 與影片指南</span>
+        </div>
+        <div class="gh-os-grid">
+          <div class="gh-os-card">
+            <div>
+              <div class="gh-os-name">iPhone / iPad (iOS)</div>
+              <p class="gh-os-desc" data-key="os-ios">點選 Wi-Fi 旁邊的 <strong>「i」</strong> 圖示，關閉 <strong>「專用位址」/「私密 Wi-Fi 位址」</strong>。</p>
+            </div>
+            <a href="https://youtube.com/shorts/Q0R0Tp9qVbM" target="_blank" rel="noopener noreferrer" class="gh-vid-btn">
+              ▶
+              <span data-key="btn-watch-video">🎬 觀看教學影片</span>
+            </a>
+          </div>
+          <div class="gh-os-card">
+            <div>
+              <div class="gh-os-name">Android</div>
+              <p class="gh-os-desc" data-key="os-android">點選 Wi-Fi 旁齒輪 &gt; 尋找「隱私權」或「MAC位址類型」 &gt; 改選為 <strong>「使用裝置 MAC」</strong>。</p>
+            </div>
+            <a href="https://youtube.com/shorts/PuZFZwf44F8" target="_blank" rel="noopener noreferrer" class="gh-vid-btn">
+              ▶
+              <span data-key="btn-watch-video">🎬 觀看教學影片</span>
+            </a>
+          </div>
+          <div class="gh-os-card">
+            <div>
+              <div class="gh-os-name">Windows 11 / 10</div>
+              <p class="gh-os-desc" data-key="os-windows">點選連線的「屬性」頁面，找到並將 <strong>「隨機硬體位址」</strong> 設為 <strong>關閉</strong>。</p>
+            </div>
+            <a href="https://youtu.be/e_T06nupvx8" target="_blank" rel="noopener noreferrer" class="gh-vid-btn">
+              ▶
+              <span data-key="btn-watch-video">🎬 觀看教學影片</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="gh-card">
+        <div class="gh-card-title">
+          <div class="gh-bar gh-bar"></div>
+          <span data-key="rescue-title">如何開啟登記網頁？(卡頓自救)</span>
+        </div>
+        <p class="gh-text-xs" data-key="rescue-desc">連線成功後一般會自動跳出登記網頁。若無跳出，請開啟您的瀏覽器點選或手動輸入以下網址強迫導向：</p>
+        <div class="gh-amber">
+          <div class="gh-amber-row">
+            <span class="gh-amber-lbl" data-key="rescue-target">手機平板強制跳轉連結：</span>
+            <a href="http://neverssl.com" target="_blank" class="gh-amber-link">http://neverssl.com</a>
+          </div>
+          <p class="gh-amber-tip" data-key="rescue-tip">※ 請務必在連線至 Teacher-Apply 後才點擊此連結，這會幫助您立刻呼叫登入驗證頁面。</p>
+        </div>
+      </div>
+
+      <div class="gh-cta-next">
+        <button class="gh-btn-next" onclick="switchMode('connect')">
+          <span data-key="btn-next-step">我已成功登記，看如何日常連線</span>
+          ›
+        </button>
+      </div>
+
+    </div>
+
+    <!-- PATH B: CONNECT -->
+    <div id="path-connect" class="gh-path u-hidden">
+
+      <div class="gh-banner gh-banner-b">
+        <div class="gh-banner-num">2</div>
+        <div class="gh-badge" data-key="ssid-connect-badge">SSID: Teacher-Connect</div>
+        <h2 data-key="step2-title">切換至 Teacher-Connect 享用暢快網路</h2>
+        <p data-key="step2-desc">只要裝置通過登記，以後在學校只需直接選取連線此正式網路。</p>
+        <div class="gh-pwd-row">
+          <span class="gh-pwd-lbl" data-key="pwd-connect-lbl">🔑 Wi-Fi 密碼 / Password</span>
+          <span class="gh-pwd-code">ccsh@2823</span>
+          <span class="gh-pwd-tip" data-key="pwd-connect-tip">連線時輸入一次即可 · Enter once when joining</span>
+        </div>
+      </div>
+
+      <div class="gh-card">
+        <div class="gh-card-title">
+          <div class="gh-bar gh-bar"></div>
+          <span data-key="daily-steps-title">日常連線三步驟</span>
+        </div>
+        <div class="gh-steps">
+          <div class="gh-step">
+            <span class="gh-step-num">1</span>
+            <div>
+              <div class="gh-step-title" data-key="daily-step1-t">選用正式 SSID</div>
+              <div class="gh-step-desc" data-key="daily-step1-d">在裝置 Wi-Fi 列表選取連線至 <strong>Teacher-Connect</strong>。</div>
+            </div>
+          </div>
+          <hr class="gh-divider">
+          <div class="gh-step">
+            <span class="gh-step-num">2</span>
+            <div>
+              <div class="gh-step-title" data-key="daily-step2-t">維持隨機 MAC 關閉</div>
+              <div class="gh-step-desc" data-key="daily-step2-d">確保「專用 Wi-Fi 位址」或「隨機硬體位址」依然保持<strong>關閉</strong>（使用原廠實體 MAC）。</div>
+            </div>
+          </div>
+          <hr class="gh-divider">
+          <div class="gh-step">
+            <span class="gh-step-num">3</span>
+            <div>
+              <div class="gh-step-title" data-key="daily-step3-t">直接連網免登入</div>
+              <div class="gh-step-desc" data-key="daily-step3-d">系統識別您的實體網卡已在資料庫中，將會自動放行，無需任何帳密驗證！</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gh-success">
+        <div class="gh-success-icon">✓</div>
+        <div class="gh-success-title" data-key="success-card-title">設定完成！未來將自動連線</div>
+        <p class="gh-success-desc" data-key="success-card-desc">您的設備已登記！往後到校便會全自動進行安全的身分識別。若遇到連線阻礙，通常與手機系統升級有關。</p>
+      </div>
+
+      <div>
+        <button class="gh-back-link" onclick="switchMode('register')">
+          ←
+          <span data-key="btn-back-reg">回看首次申請登記步驟</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- FAQ trigger -->
+    <div class="gh-faq-wrap">
+      <button class="gh-faq-btn" onclick="openModal()">
+        <span class="gh-faq-icon" aria-hidden="true">?</span>
+        <span data-key="btn-open-faq">遇到問題？點此看 常見問答 (FAQ)</span>
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="gh-footer">
+    <div class="gh-footer-inner">
+      <div>
+        <div class="gh-footer-title" data-key="footer-help-title">如有連線疑問，歡迎洽詢資訊組</div>
+        <div data-key="footer-sub">臺北市立中正高中 資訊組代理系統</div>
+      </div>
+      <div>
+        <span class="gh-footer-ext">
+          ☎
+          <span data-key="footer-phone">校內分機：710</span>
+        </span>
+      </div>
+    </div>
+    <div class="gh-footer-copy">&copy; 臺北市立中正高中. All Rights Reserved.</div>
+  </footer>
+
+</div><!-- #page-guide -->
+
+
+<!-- FAQ Modal (outside both pages so fixed positioning always works) -->
+<div id="faq-modal" class="gh-modal-backdrop" onclick="handleBackdropClick(event)">
+  <div class="gh-modal" id="faq-modal-box">
+    <div class="gh-modal-header">
+      <div class="gh-modal-title">
+        <span style="color:#0e9e7e" aria-hidden="true">?</span>
+        <span data-key="faq-modal-title">常見問與答 (Q&A)</span>
+      </div>
+      <button class="gh-modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="gh-modal-body">
+      <div class="gh-faq-item">
+        <div class="gh-faq-q">
+          <span class="gh-faq-q-mark">Q.</span>
+          <span data-key="faq-q1">之前登記過了，今天來學校為什麼突然不能上網？</span>
+        </div>
+        <div data-key="faq-a1"><strong>A：九成以上是因為手機「系統更新」。</strong>iOS 或是 Android 在重大安全性更新後，常會重置設定，把原本關閉的「私密位址(隨機 MAC)」重新悄悄開啟。請進入 Wi-Fi 設定，將隨機 MAC「改回使用裝置實體 MAC」即可秒恢復連線！</div>
+      </div>
+      <div class="gh-faq-item">
+        <div class="gh-faq-q">
+          <span class="gh-faq-q-mark">Q.</span>
+          <span data-key="faq-q2">教職員每位同仁最多能登記幾台個人設備？</span>
+        </div>
+        <div data-key="faq-a2"><strong>A：目前每位教職員最多可登記 3 台。</strong>包含自備的手機、iPad / 平板、筆記型電腦。若因汰舊換新需要變更額度，請聯絡校內資訊組。</div>
+      </div>
+      <div class="gh-faq-item">
+        <div class="gh-faq-q">
+          <span class="gh-faq-q-mark">Q.</span>
+          <span data-key="faq-q3">為什麼網卡實名制如此必要？</span>
+        </div>
+        <div data-key="faq-a3"><strong>A：保護資安與精確防護。</strong>高中校園經常面臨網路攻擊與惡意存取。透過實名制綁定實體網卡，除了提供快速連線不用重複輸入密碼外，更能落實校園核心主機及教學網路防禦。</div>
+      </div>
+    </div>
+    <div class="gh-modal-foot">
+      <button class="gh-close-btn" onclick="closeModal()" data-key="faq-close">關閉 Close</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+/* ── page transitions ── */
+function showGuide() {
+  document.getElementById('page-poster').classList.add('page-hidden');
+  document.getElementById('page-guide').classList.remove('page-hidden');
+  window.scrollTo(0, 0);
+}
+function showPoster() {
+  document.getElementById('page-guide').classList.add('page-hidden');
+  document.getElementById('page-poster').classList.remove('page-hidden');
+  window.scrollTo(0, 0);
+}
+
+/* ── tab switch ── */
+function switchMode(mode) {
+  const pathReg  = document.getElementById('path-register');
+  const pathConn = document.getElementById('path-connect');
+  const btnReg   = document.getElementById('btn-tab-reg');
+  const btnConn  = document.getElementById('btn-tab-conn');
+
+  if (mode === 'register') {
+    pathReg.classList.remove('u-hidden');
+    pathConn.classList.add('u-hidden');
+    btnReg.className  = 'gh-tab tab-active';
+    btnConn.className = 'gh-tab';
+  } else {
+    pathReg.classList.add('u-hidden');
+    pathConn.classList.remove('u-hidden');
+    btnReg.className  = 'gh-tab';
+    btnConn.className = 'gh-tab tab-active';
+  }
+}
+
+/* ── language toggle ── */
+let lang = 'zh';
+const T = {
+  zh: {
+    'nav-title': '臺北市立中正高中',
+    'nav-subtitle': '教職員自備載具 (Wi-Fi) 連線與申請',
+    'btn-download-doc': '📥 一鍵打包操作文件',
+    'select-scenario': '請選擇目前使用情境',
+    'btn-tab-register': '首次申請 (登記網卡)',
+    'btn-tab-connect': '日常直接連線',
+    'ssid-apply-badge': 'SSID: Teacher-Apply',
+    'step1-title': '連向 Teacher-Apply 進行設備登記',
+    'step1-desc': '請開啟您的設備 Wi-Fi，點選並連線至 <strong>Teacher-Apply</strong>。',
+    'pwd-apply-lbl': '🔑 Wi-Fi 密碼',
+    'pwd-apply-tip': '連線時輸入一次即可',
+    'pwd-connect-lbl': '🔑 Wi-Fi 密碼',
+    'pwd-connect-tip': '連線時輸入一次即可',
+    'mac-warn-title': '超級關鍵：請務必關閉「隨機 MAC」',
+    'mac-warn-desc': '若使用「隨機 MAC」，裝置每次重新連線都會變更代碼，導致系統無法識別您而頻繁斷線。請務必將此連線改為<strong>「使用裝置 MAC / 實體網卡位址」</strong>。',
+    'os-guide-title': '各裝置關閉隨機 MAC 與影片指南',
+    'os-ios': '點選 Wi-Fi 旁邊的 <strong>「i」</strong> 圖示，關閉 <strong>「專用位址」/「私密 Wi-Fi 位址」</strong>。',
+    'os-android': '點選 Wi-Fi 旁齒輪 &gt; 尋找「隱私權」或「MAC位址類型」 &gt; 改選為 <strong>「使用裝置 MAC」</strong>。',
+    'os-windows': '點選連線的「屬性」頁面，找到並將 <strong>「隨機硬體位址」</strong> 設為 <strong>關閉</strong>。',
+    'rescue-title': '如何開啟登記網頁？(卡頓自救)',
+    'rescue-desc': '連線成功後一般會自動跳出登記網頁。若無跳出，請開啟您的瀏覽器點選或手動輸入以下網址強迫導向：',
+    'rescue-target': '手機平板強制跳轉連結：',
+    'rescue-tip': '※ 請務必在連線至 Teacher-Apply 後才點擊此連結，這會幫助您立刻呼叫登入驗證頁面。',
+    'btn-next-step': '我已成功登記，看如何日常連線',
+    'ssid-connect-badge': 'SSID: Teacher-Connect',
+    'step2-title': '切換至 Teacher-Connect 享用暢快網路',
+    'step2-desc': '只要裝置通過登記，以後在學校只需直接選取連線此正式網路。',
+    'daily-steps-title': '日常連線三步驟',
+    'daily-step1-t': '選用正式 SSID',
+    'daily-step1-d': '在裝置 Wi-Fi 列表選取連線至 <strong>Teacher-Connect</strong>。',
+    'daily-step2-t': '維持隨機 MAC 關閉',
+    'daily-step2-d': '確保「專用 Wi-Fi 位址」或「隨機硬體位址」依然保持<strong>關閉</strong>（使用原廠實體 MAC）。',
+    'daily-step3-t': '直接連網免登入',
+    'daily-step3-d': '系統識別您的實體網卡已在資料庫中，將會自動放行，無需任何帳密驗證！',
+    'success-card-title': '設定完成！未來將自動連線',
+    'success-card-desc': '您的設備已登記！往後到校便會全自動進行安全的身分識別。若遇到連線阻礙，通常與手機系統升級有關。',
+    'btn-back-reg': '回看首次申請登記步驟',
+    'btn-open-faq': '遇到問題？點此看 常見問答 (FAQ)',
+    'faq-modal-title': '常見問與答 (Q&A)',
+    'faq-q1': '之前登記過了，今天來學校為什麼突然不能上網？',
+    'faq-a1': '<strong>A：九成以上是因為手機「系統更新」。</strong>iOS 或是 Android 在重大安全性更新後，常會重置設定，把原本關閉的「私密位址(隨機 MAC)」重新悄悄開啟。請進入 Wi-Fi 設定，將隨機 MAC「改回使用裝置實體 MAC」即可秒恢復連線！',
+    'faq-q2': '教職員每位同仁最多能登記幾台個人設備？',
+    'faq-a2': '<strong>A：目前每位教職員最多可登記 3 台。</strong>包含自備的手機、iPad / 平板、筆記型電腦。若因汰舊換新需要變更額度，請聯絡校內資訊組。',
+    'faq-q3': '為什麼網卡實名制如此必要？',
+    'faq-a3': '<strong>A：保護資安與精確防護。</strong>高中校園經常面臨網路攻擊與惡意存取。透過實名制綁定實體網卡，除了提供快速連線不用重複輸入密碼外，更能落實校園核心主機及教學網路防禦。',
+    'faq-close': '關閉',
+    'btn-watch-video': '🎬 觀看教學影片',
+    'footer-help-title': '如有連線疑問，歡迎洽詢資訊組',
+    'footer-sub': '臺北市立中正高中 資訊組代理系統',
+    'footer-phone': '校內分機：710'
+  },
+  en: {
+    'nav-title': 'Taipei Municipal Zhongzheng Senior High School',
+    'nav-subtitle': 'Faculty BYOD (Wi-Fi) Connection & Application',
+    'btn-download-doc': '📥 Download Step-by-Step Guide',
+    'select-scenario': 'Please Select Your Current Scenario',
+    'btn-tab-register': 'First-time Registration',
+    'btn-tab-connect': 'Daily Easy Connect',
+    'ssid-apply-badge': 'SSID: Teacher-Apply',
+    'step1-title': 'Connect to Teacher-Apply to Register Device',
+    'step1-desc': 'Turn on your Wi-Fi, look for and connect to <strong>Teacher-Apply</strong> SSID.',
+    'pwd-apply-lbl': '🔑 Wi-Fi Password',
+    'pwd-apply-tip': 'Enter once when joining',
+    'pwd-connect-lbl': '🔑 Wi-Fi Password',
+    'pwd-connect-tip': 'Enter once when joining',
+    'mac-warn-title': 'CRITICAL: Must Disable Randomized MAC Address',
+    'mac-warn-desc': 'Using "Random MAC / Private Wi-Fi Address" causes your device to change its identity constantly, leading to frequent disconnections. Switch to <strong>"Use Device MAC / Real MAC Address"</strong> instead.',
+    'os-guide-title': 'Disabling Randomized MAC & Video Guides',
+    'os-ios': 'Tap the <strong>"i"</strong> icon next to Wi-Fi name, and turn off <strong>"Private Wi-Fi Address" / "Private Address"</strong>.',
+    'os-android': 'Tap gear icon next to Wi-Fi &gt; Find "Privacy" or "MAC Address Type" &gt; Select <strong>"Use Device MAC"</strong>.',
+    'os-windows': 'Go to connected network "Properties", find and set <strong>"Random Hardware Addresses"</strong> to <strong>Off</strong>.',
+    'rescue-title': 'Cannot Access the Portal? (Self-Rescue)',
+    'rescue-desc': 'Normally, the portal page pops up automatically. If not, open your browser and go to this link to force redirect:',
+    'rescue-target': 'Redirect link for mobile/tablet:',
+    'rescue-tip': '* Ensure you are connected to Teacher-Apply before clicking — this calls up the identity verification page.',
+    'btn-next-step': 'Already registered — how to connect daily?',
+    'ssid-connect-badge': 'SSID: Teacher-Connect',
+    'step2-title': 'Connect to Teacher-Connect for Normal Web Access',
+    'step2-desc': 'Once registered, simply choose this official network for automatic internet access.',
+    'daily-steps-title': 'Daily Connection in 3 Steps',
+    'daily-step1-t': 'Choose Teacher-Connect',
+    'daily-step1-d': 'Select <strong>Teacher-Connect</strong> from your device\'s Wi-Fi network list.',
+    'daily-step2-t': 'Keep Randomized MAC Disabled',
+    'daily-step2-d': 'Make sure "Private Address" or "Random Hardware Address" is turned <strong>OFF</strong> for this connection.',
+    'daily-step3-t': 'Immediate Access, No Password',
+    'daily-step3-d': 'The network detects your registered real MAC address and authorizes you instantly.',
+    'success-card-title': 'Setup Completed! Automatic Connections Ahead',
+    'success-card-desc': 'Your device is set up! Enjoy automatic secure identification. If there are connection issues later, check if a system update reset your MAC privacy settings.',
+    'btn-back-reg': 'Go back to registration steps',
+    'btn-open-faq': 'Need Help? View Frequently Asked Questions (FAQ)',
+    'faq-modal-title': 'Frequently Asked Questions (FAQ)',
+    'faq-q1': 'I\'ve registered before — why can\'t I access internet today?',
+    'faq-a1': '<strong>A: Over 90% is caused by system updates.</strong> Major safety updates on iOS or Android often automatically re-enable "Private Address (Randomized MAC)". Go back to Wi-Fi settings and turn it OFF to restore connection instantly.',
+    'faq-q2': 'What is the device limit per faculty member?',
+    'faq-a2': '<strong>A: Currently 3 personal devices max</strong>, including phones, tablets, or laptops. If you need changes, please contact the school IT section.',
+    'faq-q3': 'Why is MAC address binding necessary?',
+    'faq-a3': '<strong>A: Enhanced cybersecurity & defense.</strong> School networks are targeted by malicious threats. Real MAC binding avoids repeatedly typing accounts and solidifies overall network security.',
+    'faq-close': 'Close',
+    'btn-watch-video': '🎬 Watch Video Guide',
+    'footer-help-title': 'Any connection queries? Contact IT Section',
+    'footer-sub': 'Zhongzheng Senior High School — IT Office',
+    'footer-phone': 'Ext. 710'
+  }
+};
+
+function toggleLanguage() {
+  lang = lang === 'zh' ? 'en' : 'zh';
+  document.getElementById('lang-btn-text').textContent = lang === 'zh' ? 'English' : '繁體中文';
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const v = T[lang][el.getAttribute('data-key')];
+    if (v !== undefined) el.innerHTML = v;
+  });
+}
+
+/* ── FAQ modal ── */
+function openModal() {
+  document.getElementById('faq-modal').classList.add('modal-open');
+}
+function closeModal() {
+  document.getElementById('faq-modal').classList.remove('modal-open');
+}
+function handleBackdropClick(e) {
+  if (e.target === document.getElementById('faq-modal')) closeModal();
+}
+</script>
+</body>
+</html>
