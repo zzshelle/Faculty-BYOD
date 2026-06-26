@@ -25,123 +25,101 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .u-hidden { display: none !important; }
 
 /* ============================================
-   POSTER PAGE
+   POSTER PAGE  — web card style, matches guide page scale
+   Tokens: same as guide — Primary #0e9e7e · Deep #0b3b33 · Text #16241f
+   Scale: caption 12px · body 14–15px · card-title 16px · section 18px
 =========================================== */
 #page-poster {
   background: #e9f1ed;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 48px 24px;
+  padding: 40px 24px 56px;
   min-height: 100vh;
   font-family: 'Noto Sans TC', sans-serif;
 }
 .poster {
   position: relative;
-  width: 1240px;
+  width: 720px;
   max-width: 100%;
-  aspect-ratio: 1240 / 1754;
   background: #ffffff;
+  border-radius: 20px;
   box-shadow: 0 8px 40px rgba(11,59,51,.14);
-  overflow: hidden;
 }
-.p-accent { position:absolute; top:0; left:0; bottom:0; width:18px; background:#0e9e7e; }
-.p-body   { position:absolute; inset:0; padding:84px 80px 72px 100px; display:flex; flex-direction:column; }
+.p-accent { position:absolute; top:0; left:0; bottom:0; width:6px; background:#0e9e7e; border-radius:20px 0 0 20px; }
+.p-body   { padding:40px 40px 36px 52px; display:flex; flex-direction:column; gap:0; }
 
-.p-header     { display:flex; justify-content:space-between; align-items:flex-start; font-size:20px; color:#5d7068; font-weight:500; letter-spacing:.5px; }
-.p-org-name   { font-weight:700; color:#16241f; }
-.p-org-sub    { font-family:'IBM Plex Mono',monospace; font-size:15px; color:#8a9a93; letter-spacing:1px; margin-top:4px; }
-.p-badge      { font-family:'IBM Plex Mono',monospace; color:#0e9e7e; letter-spacing:3px; padding-top:4px; }
+.p-header   { display:flex; justify-content:space-between; align-items:flex-start; font-size:14px; color:#5d7068; font-weight:500; }
+.p-org-name { font-weight:700; color:#16241f; }
+.p-org-sub  { font-family:'IBM Plex Mono',monospace; font-size:12px; color:#8a9a93; letter-spacing:.5px; margin-top:3px; }
+.p-badge    { font-family:'IBM Plex Mono',monospace; font-size:11px; color:#0e9e7e; letter-spacing:2px; padding-top:2px; }
 
-.p-title      { margin-top:46px; }
-.p-tag        { display:inline-block; background:#e7f4ef; color:#0b7a60; font-size:21px; font-weight:700; letter-spacing:1.5px; padding:9px 18px; border-radius:8px; }
-.p-h1         { margin:22px 0 0; font-size:76px; font-weight:900; line-height:1.14; letter-spacing:-1px; color:#16241f; }
-.p-subtitle   { margin-top:14px; font-size:30px; font-weight:500; color:#3f8f7c; letter-spacing:.3px; }
-.p-audience   { margin-top:22px; font-size:25px; font-weight:500; color:#54665f; }
-.p-aud-en     { color:#8a9a93; font-size:21px; }
-.p-byod-note  { margin-top:18px; background:#eef7f4; border-left:4px solid #0e9e7e; border-radius:8px; padding:16px 20px; display:flex; gap:14px; align-items:flex-start; }
-.p-byod-icon  { font-size:22px; color:#0b7a60; flex-shrink:0; margin-top:2px; }
-.p-byod-zh    { font-size:18px; line-height:1.6; color:#2e4a40; }
-.p-byod-en    { margin-top:6px; font-size:15px; line-height:1.5; color:#607a71; font-style:italic; }
+.p-title    { margin-top:24px; }
+.p-tag      { display:inline-block; background:#e7f4ef; color:#0b7a60; font-size:12px; font-weight:700; letter-spacing:1px; padding:5px 11px; border-radius:6px; }
+.p-h1       { margin:12px 0 0; font-size:32px; font-weight:900; line-height:1.2; letter-spacing:-.5px; color:#16241f; }
+.p-subtitle { margin-top:8px; font-size:15px; font-weight:500; color:#3f8f7c; }
+.p-audience { margin-top:12px; font-size:14px; font-weight:500; color:#54665f; }
+.p-aud-en   { color:#8a9a93; font-size:13px; }
 
-.p-datecard   { margin-top:36px; background:#0b3b33; border-radius:20px; padding:36px 40px; display:flex; align-items:center; justify-content:space-between; }
-.p-date-lbl   { font-family:'IBM Plex Mono',monospace; font-size:17px; letter-spacing:3px; color:#7fc9b4; }
-.p-date-num   { margin-top:12px; font-size:66px; font-weight:900; color:#ffffff; line-height:1; }
-.p-date-dash  { color:#7fc9b4; }
-.p-date-r     { text-align:right; line-height:1.5; }
-.p-date-zh    { font-size:22px; color:#aedccf; }
-.p-date-en    { font-family:'IBM Plex Mono',monospace; font-size:18px; color:#7fc9b4; margin-top:8px; }
+.p-byod-note { margin-top:14px; background:#eef7f4; border-left:3px solid #0e9e7e; border-radius:8px; padding:12px 16px; display:flex; gap:10px; align-items:flex-start; }
+.p-byod-icon { font-size:16px; color:#0b7a60; flex-shrink:0; margin-top:1px; }
+.p-byod-zh   { font-size:13.5px; line-height:1.65; color:#2e4a40; }
+.p-byod-en   { margin-top:4px; font-size:12px; line-height:1.5; color:#607a71; font-style:italic; }
 
-.p-note-hdr   { margin-top:38px; display:flex; align-items:baseline; gap:14px; }
-.p-note-ttl   { font-size:26px; font-weight:700; color:#16241f; }
-.p-note-en    { font-family:'IBM Plex Mono',monospace; font-size:16px; letter-spacing:2px; color:#9aa9a3; }
+.p-datecard  { margin-top:20px; background:#0b3b33; border-radius:14px; padding:20px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.p-date-lbl  { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:2px; color:#7fc9b4; }
+.p-date-num  { margin-top:6px; font-size:38px; font-weight:900; color:#ffffff; line-height:1; }
+.p-date-dash { color:#7fc9b4; }
+.p-date-r    { text-align:right; line-height:1.55; flex-shrink:0; }
+.p-date-zh   { font-size:14px; color:#aedccf; }
+.p-date-en   { font-family:'IBM Plex Mono',monospace; font-size:12px; color:#7fc9b4; margin-top:5px; }
 
-.p-card       { margin-top:18px; background:#f1f8f5; border-radius:18px; padding:28px 32px; display:flex; gap:24px; }
-.p-card+.p-card { margin-top:14px; }
-.p-card-num   { flex:0 0 auto; font-size:36px; font-weight:900; color:#0e9e7e; line-height:1; }
-.p-card-body  { flex:1; }
-.p-card-h     { font-size:27px; font-weight:700; color:#16241f; }
-.p-card-hen   { font-size:19px; font-weight:500; color:#7a8c85; }
-.p-card-zh    { margin-top:9px; font-size:22px; line-height:1.58; color:#4b5d56; }
-.p-card-hl    { color:#0b7a60; font-weight:700; }
-.p-card-en    { margin-top:6px; font-size:18px; line-height:1.5; color:#849790; }
+.p-note-hdr  { margin-top:22px; display:flex; align-items:baseline; gap:10px; }
+.p-note-ttl  { font-size:16px; font-weight:700; color:#16241f; }
+.p-note-en   { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1.5px; color:#9aa9a3; }
 
-.p-spacer     { flex:1; }
+.p-card      { margin-top:10px; background:#f1f8f5; border-radius:12px; padding:16px 20px; display:flex; gap:16px; }
+.p-card+.p-card { margin-top:8px; }
+.p-card-num  { flex:0 0 auto; font-size:22px; font-weight:900; color:#0e9e7e; line-height:1; }
+.p-card-body { flex:1; min-width:0; }
+.p-card-h    { font-size:15px; font-weight:700; color:#16241f; }
+.p-card-hen  { font-size:13px; font-weight:500; color:#7a8c85; }
+.p-card-zh   { margin-top:6px; font-size:14px; line-height:1.65; color:#4b5d56; }
+.p-card-hl   { color:#0b7a60; font-weight:700; }
+.p-card-en   { margin-top:4px; font-size:13px; line-height:1.55; color:#849790; }
+
+.p-spacer    { min-height:20px; }
 
 .p-cta {
-  display:flex; align-items:center; justify-content:center; gap:14px;
-  width:100%; background:#0e9e7e; border:none; border-radius:16px;
-  padding:24px 28px; margin-bottom:16px;
-  box-shadow:0 8px 22px rgba(14,158,126,.28);
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  width:100%; background:#0e9e7e; border:none; border-radius:12px;
+  padding:16px 20px; margin-top:20px; margin-bottom:12px;
+  box-shadow:0 4px 16px rgba(14,158,126,.28);
   cursor:pointer; transition:background .15s,box-shadow .15s;
 }
-.p-cta:hover  { background:#0b8a6e; box-shadow:0 10px 28px rgba(14,158,126,.36); }
-.p-cta-main   { font-family:'Noto Sans TC',sans-serif; font-size:30px; font-weight:900; color:#fff; letter-spacing:.5px; }
-.p-cta-sub    { font-family:'Noto Sans TC',sans-serif; font-size:18px; font-weight:500; color:#bdeede; }
-.p-cta-arrow  { font-size:30px; color:#fff; line-height:1; margin-left:4px; }
+.p-cta:hover  { background:#0b8a6e; box-shadow:0 6px 20px rgba(14,158,126,.36); }
+.p-cta-main   { font-family:'Noto Sans TC',sans-serif; font-size:17px; font-weight:900; color:#fff; letter-spacing:.3px; }
+.p-cta-sub    { font-family:'Noto Sans TC',sans-serif; font-size:13px; font-weight:500; color:#bdeede; }
+.p-cta-arrow  { font-size:18px; color:#fff; line-height:1; }
 
-.p-nets       { display:flex; gap:16px; }
-.p-net        { flex:1; border:1.5px solid #d4e6df; border-radius:16px; padding:18px 22px; }
-.p-net-ssid   { font-family:'IBM Plex Mono',monospace; font-size:22px; color:#16241f; }
-.p-net-desc   { margin-top:3px; font-size:18px; color:#6b7d76; }
+.p-nets      { display:flex; gap:10px; }
+.p-net       { flex:1; border:1.5px solid #d4e6df; border-radius:10px; padding:13px 16px; }
+.p-net-ssid  { font-family:'IBM Plex Mono',monospace; font-size:14px; font-weight:600; color:#16241f; }
+.p-net-desc  { margin-top:2px; font-size:12px; color:#6b7d76; }
 
-.p-footer     { margin-top:22px; border-top:1px solid #e2ece8; padding-top:20px; font-size:19px; line-height:1.55; color:#6b7d76; }
+.p-footer    { margin-top:16px; border-top:1px solid #e2ece8; padding-top:14px; font-size:13px; line-height:1.6; color:#6b7d76; }
 .p-footer-ext { color:#16241f; font-weight:700; }
-.p-footer-en  { font-size:16px; color:#9aa9a3; margin-top:4px; }
+.p-footer-en  { font-size:12px; color:#9aa9a3; margin-top:3px; }
 
-/* responsive poster */
-@media (max-width: 1300px) {
-  #page-poster  { padding:24px 12px; }
-  .p-body       { font-size:1.6vw; padding:6.8vw 6.5vw 5.8vw 8vw; }
-  .p-h1         { font-size:6.1vw; }
-  .p-subtitle   { font-size:2.4vw; }
-  .p-date-num   { font-size:5.3vw; }
-  .p-tag        { font-size:1.7vw; }
-  .p-audience   { font-size:2vw; }
-  .p-aud-en     { font-size:1.7vw; }
-  .p-header     { font-size:1.6vw; }
-  .p-org-sub    { font-size:1.2vw; }
-  .p-date-lbl   { font-size:1.4vw; }
-  .p-date-zh    { font-size:1.8vw; }
-  .p-date-en    { font-size:1.5vw; }
-  .p-card-num   { font-size:2.9vw; }
-  .p-card-h     { font-size:2.2vw; }
-  .p-card-hen   { font-size:1.5vw; }
-  .p-card-zh    { font-size:1.8vw; }
-  .p-card-en    { font-size:1.5vw; }
-  .p-cta-main   { font-size:2.4vw; }
-  .p-cta-sub    { font-size:1.5vw; }
-  .p-cta-arrow  { font-size:2.4vw; }
-  .p-net-ssid   { font-size:1.8vw; }
-  .p-net-desc   { font-size:1.5vw; }
-  .p-footer     { font-size:1.5vw; }
-  .p-footer-en  { font-size:1.3vw; }
-  .p-note-ttl   { font-size:2.1vw; }
-  .p-note-en    { font-size:1.3vw; }
-  .p-accent     { width:1.45vw; }
-  .p-datecard   { padding:2.9vw 3.2vw; }
-  .p-card       { padding:2.3vw 2.6vw; }
-  .p-cta        { padding:1.9vw 2.3vw; border-radius:1.3vw; }
+/* poster — mobile (≤ 480px) */
+@media (max-width: 480px) {
+  #page-poster { padding: 0; }
+  .poster      { border-radius: 0; box-shadow: none; }
+  .p-body      { padding: 28px 20px 32px 28px; }
+  .p-accent    { width: 5px; border-radius: 0; }
+  .p-datecard  { flex-direction: column; gap: 8px; }
+  .p-date-r    { text-align: left; }
+  .p-nets      { flex-direction: column; }
 }
 
 /* ============================================
@@ -281,6 +259,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .gh-warn-icon { color:#0b6e8a; font-size:18px; flex-shrink:0; margin-top:2px; font-weight:700; }
 .gh-warn-title { font-weight:700; color:#0b3d52; font-size:15px; margin-bottom:5px; }
 .gh-warn-desc  { font-size:14px; color:#1a5c72; line-height:1.65; }
+
+/* coverage notice */
+.gh-coverage       { background:#fef7ed; border:1px solid #f0b429; border-radius:18px; padding:16px 20px; display:flex; gap:14px; margin-top:16px; }
+.gh-coverage-icon  { color:#b45309; font-size:18px; flex-shrink:0; margin-top:2px; }
+.gh-coverage-title { font-weight:700; color:#7c3a06; font-size:15px; margin-bottom:4px; }
+.gh-coverage-desc  { font-size:14px; color:#92400e; line-height:1.65; }
 
 /* white card */
 .gh-card { background:#fff; border:1px solid #d4e6df; border-radius:18px; padding:24px; }
@@ -564,6 +548,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
         </div>
       </div>
 
+      <div class="p-card">
+        <div class="p-card-num">03</div>
+        <div class="p-card-body">
+          <div class="p-card-h">訊號覆蓋範圍 <span class="p-card-hen">Coverage Area</span></div>
+          <div class="p-card-zh">試營運期間，Teacher-Apply 及 Teacher-Connect <span class="p-card-hl">僅於行政及學科辦公室開放</span>，教室區目前尚未開放，請在辦公室進行設備登記。</div>
+          <div class="p-card-en">During the trial, Teacher-Apply and Teacher-Connect are <span class="p-card-hl">available in administrative and subject offices only</span>. Classroom coverage is not yet active.</div>
+        </div>
+      </div>
+
       <div class="p-spacer"></div>
 
       <button class="p-cta" onclick="showGuide()">
@@ -656,6 +649,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
         </div>
       </div>
 
+      <div class="gh-coverage">
+        <div class="gh-coverage-icon">⚠</div>
+        <div>
+          <div class="gh-coverage-title" data-key="coverage-title">試營運訊號覆蓋範圍</div>
+          <div class="gh-coverage-desc" data-key="coverage-desc">Teacher-Apply 及 Teacher-Connect <strong>僅於行政及學科辦公室開放</strong>，教室區尚未開放。請確認您在辦公室範圍內進行設備登記。</div>
+        </div>
+      </div>
+
       <div class="gh-warn">
         <div class="gh-warn-icon">⚠</div>
         <div>
@@ -736,6 +737,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
           <span class="gh-pwd-lbl" data-key="pwd-connect-lbl">Wi-Fi 密碼 / Password</span>
           <span class="gh-pwd-code">ccsh@2823</span>
           <span class="gh-pwd-tip" data-key="pwd-connect-tip">連線時輸入一次即可 · Enter once when joining</span>
+        </div>
+      </div>
+
+      <div class="gh-coverage">
+        <div class="gh-coverage-icon">⚠</div>
+        <div>
+          <div class="gh-coverage-title" data-key="coverage-title">試營運訊號覆蓋範圍</div>
+          <div class="gh-coverage-desc" data-key="coverage-desc">Teacher-Apply 及 Teacher-Connect <strong>僅於行政及學科辦公室開放</strong>，教室區尚未開放。請確認您在辦公室範圍內進行設備登記。</div>
         </div>
       </div>
 
@@ -979,6 +988,8 @@ const T = {
     'faq-a2': '<strong>A：目前每位教職員最多可登記 3 台。</strong>包含自備的手機、iPad / 平板、筆記型電腦。若因汰舊換新需要變更額度，請聯絡校內資訊組。',
     'faq-q3': '為什麼網卡實名制如此必要？',
     'faq-a3': '<strong>A：保護資安與精確防護。</strong>高中校園經常面臨網路攻擊與惡意存取。透過實名制綁定實體網卡，除了提供快速連線不用重複輸入密碼外，更能落實校園核心主機及教學網路防禦。',
+    'coverage-title': '試營運訊號覆蓋範圍',
+    'coverage-desc': 'Teacher-Apply 及 Teacher-Connect <strong>僅於行政及學科辦公室開放</strong>，教室區尚未開放。請確認您在辦公室範圍內進行設備登記。',
     'faq-close': '關閉',
     'btn-watch-video': '查看操作步驟',
     'footer-help-title': '如有連線疑問，歡迎洽詢資訊組',
@@ -1033,6 +1044,8 @@ const T = {
     'faq-a2': '<strong>A: Currently 3 personal devices max</strong>, including phones, tablets, or laptops. If you need changes, please contact the school IT section.',
     'faq-q3': 'Why is MAC address binding necessary?',
     'faq-a3': '<strong>A: Enhanced cybersecurity & defense.</strong> School networks are targeted by malicious threats. Real MAC binding avoids repeatedly typing accounts and solidifies overall network security.',
+    'coverage-title': 'Trial Coverage Area',
+    'coverage-desc': 'Teacher-Apply and Teacher-Connect are <strong>available in administrative and subject offices only</strong>. Classroom coverage is not yet active — please register from an office area.',
     'faq-close': 'Close',
     'btn-watch-video': 'View Step-by-Step Guide',
     'footer-help-title': 'Any connection queries? Contact IT Section',
