@@ -184,10 +184,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .gh-back:hover { background:#f1f8f5; color:#4b5d56; }
 .gh-logo {
-  width:38px; height:38px; background:#0e9e7e; border-radius:10px;
+  width:38px; height:38px; background:linear-gradient(135deg,#0b4d6e,#0e9e7e); border-radius:10px;
   display:flex; align-items:center; justify-content:center;
   color:#fff; font-size:16px; flex-shrink:0;
-  box-shadow:0 4px 10px rgba(14,158,126,.25);
+  box-shadow:0 4px 10px rgba(11,77,110,.28);
 }
 .gh-brand-title { font-size:15px; font-weight:700; color:#16241f; }
 .gh-brand-sub   { font-size:13px; color:#6b7d76; font-weight:500; }
@@ -195,12 +195,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .gh-controls { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
 .gh-btn-dl {
   display:flex; align-items:center; gap:6px;
-  background:#fef3c7; border:1px solid #fcd34d; color:#16241f;
+  background:#e4f2f8; border:1px solid #a8d4e6; color:#0b3d52;
   font-weight:700; font-size:13px; padding:7px 12px; border-radius:9px;
-  transition:background .15s; box-shadow:0 1px 2px rgba(0,0,0,.05);
+  transition:background .15s; box-shadow:0 1px 2px rgba(11,61,82,.06);
   text-decoration:none;
 }
-.gh-btn-dl:hover { background:#fde68a; }
+.gh-btn-dl:hover { background:#cce6f4; }
 .gh-btn-lang {
   display:flex; align-items:center; gap:6px;
   background:#e7f4ef; border:1px solid #c3e5d8; color:#0b7a60;
@@ -227,7 +227,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .gh-tabs-wrap { text-align:center; margin-bottom:32px; }
 .gh-tabs {
   display:inline-flex; padding:4px;
-  background:rgba(11,59,51,.08); border-radius:18px;
+  background:rgba(11,77,110,.08); border-radius:18px;
   width:100%;
 }
 @media (min-width:640px) { .gh-tabs { width:auto; } }
@@ -239,7 +239,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color:#6b7d76; background:transparent;
 }
 .gh-tab:hover { color:#16241f; }
-.gh-tab.tab-active { background:#fff; color:#0e9e7e; box-shadow:0 1px 4px rgba(11,59,51,.1); }
+.gh-tab.tab-active { background:#fff; color:#0b4d6e; box-shadow:0 1px 4px rgba(11,77,110,.12); }
 
 /* paths */
 .gh-path { display:flex; flex-direction:column; gap:22px; }
@@ -254,8 +254,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-size:110px; font-weight:900; color:rgba(255,255,255,.06);
   line-height:1; user-select:none; pointer-events:none;
 }
-.gh-banner-a { background:#0b3b33; box-shadow:0 4px 16px rgba(11,59,51,.28); }
-.gh-banner-b { background:#0b5c46; box-shadow:0 4px 16px rgba(11,92,70,.24); }
+.gh-banner-a { background:linear-gradient(135deg,#0b2e4a 0%,#0b4a3a 100%); box-shadow:0 4px 16px rgba(11,46,74,.32); }
+.gh-banner-b { background:linear-gradient(135deg,#0b4a6e 0%,#0b7a60 100%); box-shadow:0 4px 16px rgba(11,74,110,.28); }
 .gh-badge {
   display:inline-block; font-size:12px; font-weight:700;
   letter-spacing:.08em; text-transform:uppercase;
@@ -273,15 +273,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .gh-pwd-tip   { font-size:12px; color:rgba(255,255,255,.55); }
 
 /* warning card */
-.gh-warn { background:#fff1f2; border:1px solid #ffe4e6; border-radius:18px; padding:20px; display:flex; gap:14px; }
-.gh-warn-icon { color:#f43f5e; font-size:18px; flex-shrink:0; margin-top:2px; }
-.gh-warn-title { font-weight:700; color:#9f1239; font-size:15px; margin-bottom:5px; }
-.gh-warn-desc  { font-size:14px; color:#be123c; line-height:1.65; }
+.gh-warn { background:#eef6fa; border:1px solid #a8d4e6; border-radius:18px; padding:20px; display:flex; gap:14px; }
+.gh-warn-icon { color:#0b6e8a; font-size:18px; flex-shrink:0; margin-top:2px; font-weight:700; }
+.gh-warn-title { font-weight:700; color:#0b3d52; font-size:15px; margin-bottom:5px; }
+.gh-warn-desc  { font-size:14px; color:#1a5c72; line-height:1.65; }
 
 /* white card */
 .gh-card { background:#fff; border:1px solid #d4e6df; border-radius:18px; padding:24px; }
 .gh-card-title { font-size:16px; font-weight:700; color:#16241f; display:flex; align-items:center; gap:8px; margin-bottom:16px; }
-.gh-bar { width:4px; height:15px; border-radius:2px; flex-shrink:0; background:#0e9e7e; }
+.gh-bar { width:4px; height:15px; border-radius:2px; flex-shrink:0; background:linear-gradient(180deg,#0b4d6e,#0e9e7e); }
 
 /* OS grid */
 .gh-os-grid {
@@ -300,12 +300,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .gh-vid-btn {
   display:flex; align-items:center; justify-content:center; gap:6px;
   width:100%; padding:8px 12px;
-  background:#fff; border:1px solid #d4e6df; border-radius:9px;
-  font-size:13px; font-weight:700; color:#4b5d56;
+  background:#fff; border:1px solid #a8d4e6; border-radius:9px;
+  font-size:13px; font-weight:700; color:#0b4d6e;
   transition:background .15s,color .15s;
-  box-shadow:0 1px 2px rgba(11,59,51,.05); text-decoration:none;
+  box-shadow:0 1px 2px rgba(11,77,110,.07); text-decoration:none;
 }
-.gh-vid-btn:hover { background:#f1f8f5; color:#16241f; }
+.gh-vid-btn:hover { background:#e4f2f8; color:#0b2e4a; }
 
 /* rescue / amber */
 .gh-amber { background:#fffbeb; border:1px solid #fde68a; border-radius:12px; padding:16px; }
@@ -325,20 +325,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .gh-cta-next { text-align:center; padding-top:8px; }
 .gh-btn-next {
   display:inline-flex; align-items:center; gap:8px;
-  background:#0e9e7e; color:#fff;
+  background:linear-gradient(135deg,#0b4d6e,#0e9e7e); color:#fff;
   font-size:15px; font-weight:700;
   padding:12px 30px; border-radius:12px; border:none;
-  cursor:pointer; transition:background .15s;
-  box-shadow:0 4px 14px rgba(14,158,126,.28);
+  cursor:pointer; transition:opacity .15s;
+  box-shadow:0 4px 14px rgba(11,77,110,.3);
 }
-.gh-btn-next:hover { background:#0b8a6e; }
+.gh-btn-next:hover { opacity:.9; }
 
 /* daily steps */
 .gh-steps { display:flex; flex-direction:column; gap:16px; }
 .gh-step  { display:flex; gap:16px; }
 .gh-step-num {
   width:26px; height:26px; border-radius:50%;
-  background:#e7f4ef; color:#0b7a60;
+  background:#e4f2f8; color:#0b4d6e;
   display:flex; align-items:center; justify-content:center;
   font-weight:700; font-size:13px; flex-shrink:0; margin-top:2px;
 }
@@ -366,7 +366,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   cursor:pointer; transition:background .15s;
 }
 .gh-faq-btn:hover { background:#f1f8f5; }
-.gh-faq-icon { color:#0e9e7e; font-size:16px; }
+.gh-faq-icon { color:#0b4d6e; font-size:16px; font-weight:700; }
 
 /* modal */
 .gh-modal-backdrop {
@@ -395,17 +395,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .gh-modal-body   { padding:20px; overflow-y:auto; display:flex; flex-direction:column; gap:14px; font-size:14px; color:#4b5d56; line-height:1.65; }
 .gh-faq-item     { background:#f1f8f5; padding:16px; border-radius:14px; }
 .gh-faq-q        { font-weight:700; color:#16241f; display:flex; align-items:flex-start; gap:6px; margin-bottom:6px; }
-.gh-faq-q-mark   { color:#f43f5e; flex-shrink:0; }
+.gh-faq-q-mark   { color:#0b6e8a; flex-shrink:0; }
 .gh-modal-foot   { padding:16px 22px; border-top:1px solid #d4e6df; background:rgba(241,248,245,.5); border-radius:0 0 24px 24px; text-align:center; }
-.gh-close-btn    { background:#0b3b33; color:#fff; font-weight:700; font-size:13px; padding:10px 24px; border-radius:12px; border:none; cursor:pointer; transition:background .15s; }
-.gh-close-btn:hover { background:#16241f; }
+.gh-close-btn    { background:linear-gradient(135deg,#0b4d6e,#0b7a60); color:#fff; font-weight:700; font-size:13px; padding:10px 24px; border-radius:12px; border:none; cursor:pointer; transition:opacity .15s; }
+.gh-close-btn:hover { opacity:.88; }
 
 /* footer */
 .gh-footer { background:#fff; border-top:1px solid #d4e6df; margin-top:64px; padding:28px 24px; font-size:14px; color:#6b7d76; }
 .gh-footer-inner { max-width:896px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:14px; text-align:center; }
 @media (min-width:640px) { .gh-footer-inner { flex-direction:row; justify-content:space-between; text-align:left; } }
 .gh-footer-title { font-weight:700; color:#16241f; font-size:15px; margin-bottom:2px; }
-.gh-footer-ext   { display:inline-flex; align-items:center; gap:6px; background:#e7f4ef; color:#0b7a60; padding:8px 16px; border-radius:12px; font-weight:700; border:1px solid #c3e5d8; }
+.gh-footer-ext   { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#e4f2f8,#e7f4ef); color:#0b4d6e; padding:8px 16px; border-radius:12px; font-weight:700; border:1px solid #a8d4e6; }
 .gh-footer-copy  { text-align:center; font-size:12px; color:#9aa9a3; border-top:1px solid #d4e6df; margin-top:20px; padding-top:14px; max-width:896px; margin-left:auto; margin-right:auto; }
 </style>
 </head>
@@ -521,7 +521,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <div class="gh-controls">
         <a href="https://drive.google.com/file/d/1zpRjaxYxhsHBvcd3CNRR2KXD15Wd86ET/view?usp=drive_link" target="_blank" class="gh-btn-dl">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
-          <span data-key="btn-download-doc">📥 一鍵打包操作文件</span>
+          <span data-key="btn-download-doc">一鍵打包操作文件</span>
         </a>
         <button class="gh-btn-lang" onclick="toggleLanguage()">
           <span id="lang-btn-text">English</span>
@@ -557,7 +557,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
         <h2 data-key="step1-title">連向 Teacher-Apply 進行設備登記</h2>
         <p data-key="step1-desc">請開啟您的設備 Wi-Fi，點選並連線至 <strong>Teacher-Apply</strong>。</p>
         <div class="gh-pwd-row">
-          <span class="gh-pwd-lbl" data-key="pwd-apply-lbl">🔑 Wi-Fi 密碼 / Password</span>
+          <span class="gh-pwd-lbl" data-key="pwd-apply-lbl">Wi-Fi 密碼 / Password</span>
           <span class="gh-pwd-code">ccsh@2823</span>
           <span class="gh-pwd-tip" data-key="pwd-apply-tip">連線時輸入一次即可 · Enter once when joining</span>
         </div>
@@ -582,9 +582,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
               <div class="gh-os-name">iPhone / iPad (iOS)</div>
               <p class="gh-os-desc" data-key="os-ios">點選 Wi-Fi 旁邊的 <strong>「i」</strong> 圖示，關閉 <strong>「專用位址」/「私密 Wi-Fi 位址」</strong>。</p>
             </div>
-            <a href="https://youtube.com/shorts/Q0R0Tp9qVbM" target="_blank" rel="noopener noreferrer" class="gh-vid-btn">
-              ▶
-              <span data-key="btn-watch-video">🎬 觀看教學影片</span>
+            <a href="https://zzshelle.github.io/Faculty-BYOD/iOS.html#1" target="_blank" rel="noopener noreferrer" class="gh-vid-btn">
+              <span data-key="btn-watch-video">查看操作步驟</span>
             </a>
           </div>
           <div class="gh-os-card">
@@ -592,9 +591,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
               <div class="gh-os-name">Android</div>
               <p class="gh-os-desc" data-key="os-android">點選 Wi-Fi 旁齒輪 &gt; 尋找「隱私權」或「MAC位址類型」 &gt; 改選為 <strong>「使用裝置 MAC」</strong>。</p>
             </div>
-            <a href="https://youtube.com/shorts/PuZFZwf44F8" target="_blank" rel="noopener noreferrer" class="gh-vid-btn">
-              ▶
-              <span data-key="btn-watch-video">🎬 觀看教學影片</span>
+            <a href="https://zzshelle.github.io/Faculty-BYOD/Android.html#1" target="_blank" rel="noopener noreferrer" class="gh-vid-btn">
+              <span data-key="btn-watch-video">查看操作步驟</span>
             </a>
           </div>
           <div class="gh-os-card">
@@ -602,9 +600,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
               <div class="gh-os-name">Windows 11 / 10</div>
               <p class="gh-os-desc" data-key="os-windows">點選連線的「屬性」頁面，找到並將 <strong>「隨機硬體位址」</strong> 設為 <strong>關閉</strong>。</p>
             </div>
-            <a href="https://youtu.be/e_T06nupvx8" target="_blank" rel="noopener noreferrer" class="gh-vid-btn">
-              ▶
-              <span data-key="btn-watch-video">🎬 觀看教學影片</span>
+            <a href="https://zzshelle.github.io/Faculty-BYOD/Win11.html#1" target="_blank" rel="noopener noreferrer" class="gh-vid-btn">
+              <span data-key="btn-watch-video">查看操作步驟</span>
             </a>
           </div>
         </div>
@@ -643,7 +640,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
         <h2 data-key="step2-title">切換至 Teacher-Connect 享用暢快網路</h2>
         <p data-key="step2-desc">只要裝置通過登記，以後在學校只需直接選取連線此正式網路。</p>
         <div class="gh-pwd-row">
-          <span class="gh-pwd-lbl" data-key="pwd-connect-lbl">🔑 Wi-Fi 密碼 / Password</span>
+          <span class="gh-pwd-lbl" data-key="pwd-connect-lbl">Wi-Fi 密碼 / Password</span>
           <span class="gh-pwd-code">ccsh@2823</span>
           <span class="gh-pwd-tip" data-key="pwd-connect-tip">連線時輸入一次即可 · Enter once when joining</span>
         </div>
@@ -805,16 +802,16 @@ const T = {
   zh: {
     'nav-title': '臺北市立中正高中',
     'nav-subtitle': '教職員自備載具 (Wi-Fi) 連線與申請',
-    'btn-download-doc': '📥 一鍵打包操作文件',
+    'btn-download-doc': '一鍵打包操作文件',
     'select-scenario': '請選擇目前使用情境',
     'btn-tab-register': '首次申請 (登記網卡)',
     'btn-tab-connect': '日常直接連線',
     'ssid-apply-badge': 'SSID: Teacher-Apply',
     'step1-title': '連向 Teacher-Apply 進行設備登記',
     'step1-desc': '請開啟您的設備 Wi-Fi，點選並連線至 <strong>Teacher-Apply</strong>。',
-    'pwd-apply-lbl': '🔑 Wi-Fi 密碼',
+    'pwd-apply-lbl': 'Wi-Fi 密碼',
     'pwd-apply-tip': '連線時輸入一次即可',
-    'pwd-connect-lbl': '🔑 Wi-Fi 密碼',
+    'pwd-connect-lbl': 'Wi-Fi 密碼',
     'pwd-connect-tip': '連線時輸入一次即可',
     'mac-warn-title': '超級關鍵：請務必關閉「隨機 MAC」',
     'mac-warn-desc': '若使用「隨機 MAC」，裝置每次重新連線都會變更代碼，導致系統無法識別您而頻繁斷線。請務必將此連線改為<strong>「使用裝置 MAC / 實體網卡位址」</strong>。',
@@ -849,7 +846,7 @@ const T = {
     'faq-q3': '為什麼網卡實名制如此必要？',
     'faq-a3': '<strong>A：保護資安與精確防護。</strong>高中校園經常面臨網路攻擊與惡意存取。透過實名制綁定實體網卡，除了提供快速連線不用重複輸入密碼外，更能落實校園核心主機及教學網路防禦。',
     'faq-close': '關閉',
-    'btn-watch-video': '🎬 觀看教學影片',
+    'btn-watch-video': '查看操作步驟',
     'footer-help-title': '如有連線疑問，歡迎洽詢資訊組',
     'footer-sub': '臺北市立中正高中 資訊組代理系統',
     'footer-phone': '校內分機：710'
@@ -857,7 +854,7 @@ const T = {
   en: {
     'nav-title': 'Taipei Municipal Zhongzheng Senior High School',
     'nav-subtitle': 'Faculty BYOD (Wi-Fi) Connection & Application',
-    'btn-download-doc': '📥 Download Step-by-Step Guide',
+    'btn-download-doc': 'Download Operation Guide',
     'select-scenario': 'Please Select Your Current Scenario',
     'btn-tab-register': 'First-time Registration',
     'btn-tab-connect': 'Daily Easy Connect',
@@ -901,7 +898,7 @@ const T = {
     'faq-q3': 'Why is MAC address binding necessary?',
     'faq-a3': '<strong>A: Enhanced cybersecurity & defense.</strong> School networks are targeted by malicious threats. Real MAC binding avoids repeatedly typing accounts and solidifies overall network security.',
     'faq-close': 'Close',
-    'btn-watch-video': '🎬 Watch Video Guide',
+    'btn-watch-video': 'View Step-by-Step Guide',
     'footer-help-title': 'Any connection queries? Contact IT Section',
     'footer-sub': 'Zhongzheng Senior High School — IT Office',
     'footer-phone': 'Ext. 710'
